@@ -1,0 +1,16 @@
+<% provide(:title, 'Subject') %>
+<h1> add subject </h1> 
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@subject) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<%= f.label :title %>
+			<%= f.text_field :title, class: 'form-control'%>
+
+			<%= f.submit "Create subject", class: "btn btn-primary" %>
+		<% end %>	
+	</div>	
+</div>
+
+

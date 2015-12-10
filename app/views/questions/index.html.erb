@@ -1,0 +1,29 @@
+<% provide(:title, 'Question list') %>
+<h1> Question list</h1>	
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<%= link_to "New question", new_question_path, class: "btn btn-success" %>
+		<table border="1" style="width:100%">	
+		  <tr>
+		    <th>index</th>
+		    <th>question</th>		
+		    <th>correct answer</th>
+		    <th>subject</th>
+		    <th>action</th>
+		  </tr>
+		  <% @questions.each.with_index(1) do |question, index| %>
+		  <tr>
+		    <td><%= "#{index}" %></td>   	
+		    <td><%= question.content %></td>
+		    <td><%=  %></td> 
+		    <td><%=  %></td>
+		    
+		    <td><%= link_to "Edit","#" %>
+		    		| <%= link_to "Show" , "#" %>
+		  			| <%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
+		  	</td> 
+		  </tr> 
+		  <% end %>
+		</table>
+	</div>
+</div>	
