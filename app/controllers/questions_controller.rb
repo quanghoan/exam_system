@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :admin_user
+
   def new
     @question = Question.new
     @subjects = Subject.all   
@@ -8,13 +10,9 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def destroy
-    Question.find(params[:id]).destroy
-    flash[:success] = "question deleted"
-    redirec_to questions_url
-  end
-
-  def show
+  def edit
+    @question = Question.find(params[:id])
+    @subjects = Subject.all
   end
 
   def create
@@ -28,11 +26,24 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def update
+  def destroy
+    Question.find(params[:id]).destroy
+    flash[:success] = "question deleted"
+    redirect_to questions_url
   end
 
-  def edit
+  def update
+    @subjects = Subject.all 
+    @question = Question.find(params[:id])
+    if @question.save
+      flash[:success] = "question updated."
+      redirect_to questions_url
+    else
+      render 'edit'
+    end
   end
+
+
 
   private
 

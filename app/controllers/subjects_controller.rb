@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_action :admin_user
   def new
   	@subject = Subject.new
   end
@@ -26,7 +27,7 @@ class SubjectsController < ApplicationController
   end
 
   def update
-    @subject = Template.find(params[:id])
+    @subject = Subject.find(params[:id])
     if @subject.update_attributes(subject_params)
       flash[:success] = "a subject updated!"
       redirect_to @subject
@@ -38,7 +39,7 @@ class SubjectsController < ApplicationController
   def destroy
   	Subject.find(params[:id]).destroy  
     flash[:success] = "subject deleted!"
-    redirect_to tests_url
+    redirect_to subjects_url
   end
 
   private
