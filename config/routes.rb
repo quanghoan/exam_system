@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+  get 'answers/new'
 
+  get 'sessions/new'
   root 'static_pages#home'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'

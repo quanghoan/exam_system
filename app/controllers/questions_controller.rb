@@ -3,16 +3,17 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @subjects = Subject.all   
+    @subjects = Subject.all  
+    4.times {@question.answers.build}
   end
 
   def index
+    @subjects = Subject.all
     @questions = Question.all
   end
 
   def edit
     @question = Question.find(params[:id])
-    @subjects = Subject.all
   end
 
   def create
@@ -21,8 +22,11 @@ class QuestionsController < ApplicationController
     if @question.save
       flash[:success] = "added a question."
       redirect_to questions_url
+
     else
-      render 'new'
+      # redirect_to new_question_path
+      render 'new'    
+
     end
   end
 
@@ -33,21 +37,19 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @subjects = Subject.all 
     @question = Question.find(params[:id])
-    if @question.save
-      flash[:success] = "question updated."
-      redirect_to questions_url
+    if @question.update_attributes(question_params)
+        flash[:success] = "question updated."
+        redirect_to questions_url
+
     else
       render 'edit'
     end
   end
 
-
-
   private
 
   def question_params
-    params.require(:question).permit(:subject_id, :content, :question_type)
+    params.require(:question).permit(:subject_id, :content, :question_type, answers_attributes: [:id, :content, :correct_answer])
   end
 end
