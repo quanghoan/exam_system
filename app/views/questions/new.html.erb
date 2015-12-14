@@ -1,18 +1,1 @@
-<% provide(:title, 'Question') %>
-<h1> Add Question </h1> 
-<!-- <div class="row"> -->
-<div class="col-md-6 col-md-offset-3">
-	<%= form_for(@question) do |f| %>
-		<%= render 'shared/error_messages', object: f.object %>		
-		<%=f.label :subject %>
-		<%= f.select :subject_id, options_from_collection_for_select(@subjects, 'id', 'title')	%> </br>
-	  <%= f.radio_button :question_type, 1 %>
-	  <%= label :question_type, 'multiple choice'%>
-	  <%= f.radio_button :question_type, 2 %>
-	  <%= label :question_type, 'short answer'%></br>
-	  <%= render partial: 'questions/question', locals: {f: f} %>
-	  <%# render partial: 'questions/short_answer', locals: {f: f} %>
-		<%= f.submit "Save", class: "btn btn-primary" %>
-	<% end %>	
-</div>	
-<!-- </div> -->
+<%= render 'form' %>

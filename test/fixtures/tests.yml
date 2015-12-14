@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyText
-  usre_id: 
+  subject_id: 
+  question_id: 
 
 two:
-  content: MyText
-  usre_id: 
+  subject_id: 
+  question_id: 

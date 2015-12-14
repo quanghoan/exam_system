@@ -8,12 +8,13 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all
     @questions = Question.all
+    @subjects = Subject.all
   end
 
   def edit
     @question = Question.find(params[:id])
+    @subjects = Subject.all
   end
 
   def create
@@ -21,12 +22,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash[:success] = "added a question."
-      redirect_to questions_url
-
+      redirect_to subject_path(@question.subject)      
     else
-      # redirect_to new_question_path
-      render 'new'    
-
+      render 'new'   
     end
   end
 
@@ -41,7 +39,6 @@ class QuestionsController < ApplicationController
     if @question.update_attributes(question_params)
         flash[:success] = "question updated."
         redirect_to questions_url
-
     else
       render 'edit'
     end

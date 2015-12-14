@@ -1,9 +1,9 @@
-<div class="col-md-12 form-actions" data-id="2">
+<div class="col-md-12 form-actions" data-id="1">
 	<p>
 		<%= f.text_area :content,:cols => "50", placeholder: "Create new question here..." %>
 		
 		<%= f.fields_for :answers do |builder| %>
-			<%= render partial: 'questions/answer', locals: {f: builder} %>
+			<%= render partial: 'questions/radio_answer', locals: {f: builder} %>
 		<% end %>	
 	</p>	
-</div>			
+</div>	
