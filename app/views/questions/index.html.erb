@@ -21,10 +21,10 @@
 		    		<% question.answers.each do |answer| %>
 		    			<% if answer.correct_answer %>
 		    				<div id="correct" >
-		    					<%= answer.content %>
+		    					<li><%= answer.content %></li>
 		    				</div>
 		    			<% else %>
-		    				<%= answer.content %>
+		    				<li><%= answer.content %></li>
 		    			<% end %>	
 		    		<% end %>	
 		    	</ul>	

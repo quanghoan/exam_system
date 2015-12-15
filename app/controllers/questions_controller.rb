@@ -2,9 +2,13 @@ class QuestionsController < ApplicationController
   before_action :admin_user
 
   def new
-    @question = Question.new
-    @subjects = Subject.all  
+    @question = Question.new 
     4.times {@question.answers.build}
+    @subjects = Subject.all 
+    respond_to do |format| 
+      format.html {}              
+      format.js {}
+    end
   end
 
   def index
@@ -18,6 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    
     @subjects = Subject.all
     @question = Question.new(question_params)
     if @question.save
@@ -47,6 +52,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:subject_id, :content, :question_type, answers_attributes: [:id, :content, :correct_answer])
+    params.permit(:subject_id, :content, :question_type, answers_attributes: [:id, :content, :correct_answer])
   end
 end

@@ -3,4 +3,5 @@ class Answer < ActiveRecord::Base
   validates :question, presence: true
   # validates :content, presence: true
   # validates :correct_answer, presence: true
+  
 end
