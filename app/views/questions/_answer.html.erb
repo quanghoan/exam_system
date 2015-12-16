@@ -1,6 +1,9 @@
-<p>
-	<%= f.label :content, "Answer" %>
-	<%= f.text_field :content %>
-	<%= f.check_box :correct_answer %>
-	<%= f.label :correct_answer, "Correct answer"%> 
-</p>	
+<% 4.times do |t| %>	
+	<p>
+		<%= f.label :"[#{t}][content]", "Answer" %>
+		<%= f.text_field :"[#{t}][content]" %>
+		<%= f.check_box :"[#{t}][correct_answer]" %>
+		<%= f.label :"[#{t}][correct_answer]", "Correct answer"%> 
+	</p>	
+<% end %>		
+	

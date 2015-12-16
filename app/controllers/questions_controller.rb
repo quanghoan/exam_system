@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new 
-    4.times {@question.answers.build}
+    @answers = @question.answers.build
     @subjects = Subject.all 
     respond_to do |format| 
       format.html {}              
@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    
+    byebug
     @subjects = Subject.all
     @question = Question.new(question_params)
     if @question.save

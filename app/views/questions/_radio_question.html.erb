@@ -1,12 +1,9 @@
 <div class="col-md-12 form-actions" data-id="1">
 	<p>
-		<%= text_area_tag 'content', nil,:cols => "50", placeholder: "Create new question here..." %>
-		
-		<%= fields_for :answers do |builder| %>
-		<%= hidden_field_tag 'question_type', 1 %>
-			<% 4.times do %>
-				<%= render partial: 'questions/radio_answer', locals: {f: builder} %>
-			<% end %>	
+		<%= text_area_tag 'content', nil, :cols => "50", placeholder: "Create new question here..." %>		
+		<%= hidden_field_tag :question_type, 1 %>
+		<%= fields_for :answers_attributes do |f| %>
+			<%= render 'radio_answer', f: f %>
 		<% end %>	
 	</p>	
 </div>	
