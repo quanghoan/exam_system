@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new 
+    @subject = @question.subject
     @answers = @question.answers.build
     @subjects = Subject.all 
     respond_to do |format| 
@@ -19,10 +20,11 @@ class QuestionsController < ApplicationController
   def edit
     @question = Question.find(params[:id])
     @subjects = Subject.all
+    @subject = @question.subject
   end
 
   def create
-    byebug
+    
     @subjects = Subject.all
     @question = Question.new(question_params)
     if @question.save
@@ -40,10 +42,10 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:id])    
     if @question.update_attributes(question_params)
-        flash[:success] = "question updated."
-        redirect_to questions_url
+      flash[:success] = "question updated."
+      redirect_to questions_url
     else
       render 'edit'
     end

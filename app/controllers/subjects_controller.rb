@@ -31,7 +31,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
     if @subject.update_attributes(subject_params)
       flash[:success] = "a subject updated!"
-      redirect_to @subject
+      redirect_to subjects_url
     else
       render 'edit'
     end

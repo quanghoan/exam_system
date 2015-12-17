@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214034609) do
+ActiveRecord::Schema.define(version: 20151217080848) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.string   "content"
-    t.boolean  "correct_answer"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "correct_answer", default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
@@ -26,12 +26,22 @@ ActiveRecord::Schema.define(version: 20151214034609) do
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.integer  "subject_id"
+    t.integer  "test_id"
     t.integer  "question_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   add_index "questions", ["subject_id"], name: "index_questions_on_subject_id"
+  add_index "questions", ["test_id"], name: "index_questions_on_test_id"
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "subjects", force: :cascade do |t|
     t.string   "title"
@@ -41,10 +51,12 @@ ActiveRecord::Schema.define(version: 20151214034609) do
 
   create_table "tests", force: :cascade do |t|
     t.integer  "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
+  add_index "tests", ["question_id"], name: "index_tests_on_question_id"
   add_index "tests", ["subject_id"], name: "index_tests_on_subject_id"
 
   create_table "users", force: :cascade do |t|

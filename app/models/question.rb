@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-	belongs_to :test
+	has_many :tests
   belongs_to :subject
   validates :subject_id, presence: true
   validates :question_type, presence: true

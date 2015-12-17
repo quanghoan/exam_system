@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :admin_user
   def new
     @user = User.new
   end
@@ -10,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @subjects = Subject.all
   end
 
   def create

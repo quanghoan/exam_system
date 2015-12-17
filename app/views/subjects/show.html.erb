@@ -1,9 +1,9 @@
 <% provide(:title, 'subject') %>
-<h1> "subject"</h1>	
+<h1><%= @subject.title %></h1>	
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<%= link_to "add question", new_question_path, class: "btn btn-success" %>
-		<%= link_to "create test", controller: 'tests', action: :create, method: :post %>
+		<%= button_to "create test", {controller: 'tests', action: 'create', subject_id: @subject.id}, class: "btn btn-success" %>
 		<table border="1" style="width:100%"> 
 		  <tr>
 		    <th>index</th>
@@ -24,7 +24,7 @@
 		    					<li><%= answer.content %></li>
 		    				</div>
 		    			<% else %>
-		    				<%= answer.content %>
+		    				<li><%= answer.content %></li>
 		    			<% end %>	
 		    		<% end %>	
 		    	</ul>
