@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  has_many :results
 	has_many :tests
   belongs_to :subject
   validates :subject_id, presence: true

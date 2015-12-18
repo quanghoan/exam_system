@@ -4,6 +4,7 @@ class CreateResults < ActiveRecord::Migration
     	t.integer :user_id
     	t.integer :test_id
     	t.integer :question_id
+    	t.integer :answer_id
       t.timestamps null: false
     end
   end

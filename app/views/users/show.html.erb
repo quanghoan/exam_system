@@ -16,7 +16,7 @@
 		    <td><%= subject.title %></td>
 		    <td><%= 20  %></td> 	
 		    <td><%= 30  %>minutes</td>
-		    <td><%= link_to "START", new_test_path , class: "btn btn-success" %></td>
+		    <td><%= link_to "START", new_test_path( subject_id: subject.id, user_id: @user.id ), class: "btn btn-success" %></td>
 		  </tr> 
 		  <% end %>
 		</table>

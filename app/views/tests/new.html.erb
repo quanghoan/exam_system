@@ -3,43 +3,50 @@
 <h2>your test is running...</h2>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">	
-	
-		<table border="1" style="width:100%"> 
-		  <tr>
-		    <th>index</th>
-		    <th>question</th>		
-		    <th> options</th>
-		  </tr>
-		  <% @questions.each.with_index(1) do |question, index| %>
-		  <tr>
-		    <td><%= "#{index}" %></td>   	
-		    <td><%= question.content %></td>
-		    <td>			    
-		    	<% if question.question_type == 1 %>
-		    		<% question.answers.each do |answer| %>
-		    		<ul id="ul">				    	
-		    			<li><%= radio_button_tag 'answer',answer.id %>
-		    				<%= label_tag answer.content %>
-		    			</li>		
-			    	</ul>	
-			    	<% end %>	    		
-		    	<% elsif question.question_type == 2 %>		
-		    		<% question.answers.each do |answer| %>
-			    	<ul>
-		    			<li id="ul"><%= check_box :answer, 'correct_answer' %>
-		    				<%= answer.content %>
-		    			</li>		
-			    	</ul>
-			    	<% end %>
-			    <% elsif question.question_type == 3 %>
-			    	<ul>
-		    			<%= text_area :answer,'correct_answer', placeholder: "write answer here..." %>
-		    		</ul>
-			    <% end %>	
-		    </td> 
-		  </tr> 
-		  <% end %>
-		</table>
-			
+		<%= form_for @test do |f|%>	
+			<%= hidden_field_tag :subject_id, value: @subject.id %>
+			<table border="1" style="width:100%"> 
+			  <tr>
+			    <th>index</th>
+			    <th>question</th>		
+			    <th> options</th>
+			  </tr>
+			  <% @questions.each.with_index(1) do |question, index| %>
+			  <tr>
+			    <td><%= "#{index}" %></td>   	
+			    <td><%= question.content %></td>
+			    <td>			    
+			    	<% if question.question_type == 1 %>
+			    		<% question.answers.each do |answer| %>
+		    			<%# builder.hidden_field :question_id, value: question.id %>
+		    				<%# f.fields_for :answers do |builder| %>
+					    		<ul id="ul">				    	
+					    			<li><%= radio_button_tag :answer,'correct_answer' %>
+					    				<%= answer.content %>
+					    			</li>		
+						    	</ul>	
+					    	<%# end %>
+				    	<% end %>	    		
+			    	<% elsif question.question_type == 2 %>		
+			    		<% question.answers.each do |answer| %>
+			    			<%# f.fields_for :answers do |builder| %>
+						    	<ul id="ul">
+					    			<li><%= check_box :answer, 'correct_answer' %>
+					    				<%= answer.content %>
+					    			</li>		
+						    	</ul>
+					    	<%# end %>
+				    	<% end %>
+				    <% elsif question.question_type == 3 %>
+				    	<ul>
+			    			<%= text_area :answer,'correct_answer', placeholder: "write answer here..." %>
+			    		</ul>
+				    <% end %>	
+			    </td> 
+			  </tr> 
+			  <% end %>
+			</table>	
+			<%= f.submit 'Submit' , class: "btn btn-primary"%>		
+		<% end %>	
 	</div>
 </div>	
