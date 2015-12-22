@@ -2,6 +2,7 @@
 <h1><%= @subject.title %> test</h1>
 <h2>your test is running...</h2>
 <div class="row">
+	<div> <span id="time">05:00</span> minutes</div>
 	<div class="col-md-10 col-md-offset-1">	
 		<%= form_for @test, url: url_for(controller: 'results', action: 'create') do |f|%>	
 			<%= f.hidden_field :subject_id, value: @subject.id %>
@@ -12,17 +13,16 @@
 			    <th>options</th>
 			  </tr> 
 			  <% @questions.each.with_index(1) do |question, index| %>
-			  	<%= f.hidden_field :question_id, value: question.id %>
+			  	<%= f.hidden_field :"question_id[#{question.id}]", value: question.id %>
 			  <tr>
 			    <td><%= "#{index}" %></td>   	
 			    <td><%= question.content %></td>
 			    <td>			    
 			    	<% if question.question_type == 1 %>
 			    		<% question.answers.each.with_index do |answer, index| %>
-		    			<%# builder.hidden_field :question_id, value: question.id %>
 		    				<%= f.fields_for :answers_attributes do |builder| %>
 					    		<ul id="ul">				    	
-					    			<li ><%= builder.radio_button :correct_answer, answer.id %>
+					    			<li ><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
 					    				<%= f.hidden_field :answer_id, value: answer.id  %>
 					    				<%= answer.content %>
 					    			</li>		
@@ -51,6 +51,7 @@
 			  </tr> 
 			  <% end %>
 			</table>	
+			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.submit 'Submit' , class: "btn btn-primary"%>		
 		<% end %>	
 	</div>

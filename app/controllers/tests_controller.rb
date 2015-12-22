@@ -5,6 +5,10 @@ class TestsController < ApplicationController
     @subject = Subject.find(params[:subject_id])
     @questions = @subject.questions.sample(10)
     @test = Test.new
+    respond_to do |format|
+      format.js {}
+      format.html {}
+    end
   end
 
   def index
