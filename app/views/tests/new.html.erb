@@ -3,43 +3,48 @@
 <h2>your test is running...</h2>
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">	
-		<%= form_for @test do |f|%>	
-			<%= hidden_field_tag :subject_id, value: @subject.id %>
+		<%= form_for @test, url: url_for(controller: 'results', action: 'create') do |f|%>	
+			<%= f.hidden_field :subject_id, value: @subject.id %>
 			<table border="1" style="width:100%"> 
 			  <tr>
 			    <th>index</th>
 			    <th>question</th>		
-			    <th> options</th>
-			  </tr>
+			    <th>options</th>
+			  </tr> 
 			  <% @questions.each.with_index(1) do |question, index| %>
+			  	<%= f.hidden_field :question_id, value: question.id %>
 			  <tr>
 			    <td><%= "#{index}" %></td>   	
 			    <td><%= question.content %></td>
 			    <td>			    
 			    	<% if question.question_type == 1 %>
-			    		<% question.answers.each do |answer| %>
+			    		<% question.answers.each.with_index do |answer, index| %>
 		    			<%# builder.hidden_field :question_id, value: question.id %>
-		    				<%# f.fields_for :answers do |builder| %>
+		    				<%= f.fields_for :answers_attributes do |builder| %>
 					    		<ul id="ul">				    	
-					    			<li><%= radio_button_tag :answer,'correct_answer' %>
+					    			<li ><%= builder.radio_button :correct_answer, answer.id %>
+					    				<%= f.hidden_field :answer_id, value: answer.id  %>
 					    				<%= answer.content %>
 					    			</li>		
 						    	</ul>	
-					    	<%# end %>
+					    	<% end %>
 				    	<% end %>	    		
 			    	<% elsif question.question_type == 2 %>		
 			    		<% question.answers.each do |answer| %>
-			    			<%# f.fields_for :answers do |builder| %>
-						    	<ul id="ul">
-					    			<li><%= check_box :answer, 'correct_answer' %>
+			    			<%= f.fields_for :answers_attributes do |builder| %> 
+						    	<ul id="ul"> 
+					    			<li><%= builder.check_box :correct_answer %>
+					    				<%= f.hidden_field :answer_id, value: answer.id  %>
 					    				<%= answer.content %>
 					    			</li>		
-						    	</ul>
-					    	<%# end %>
+						    	</ul>  
+					    	<% end %>
 				    	<% end %>
 				    <% elsif question.question_type == 3 %>
 				    	<ul>
-			    			<%= text_area :answer,'correct_answer', placeholder: "write answer here..." %>
+				    		<%= f.fields_for :answers_attributes do |builder| %>
+			    				<%= builder.text_area :content, placeholder: "write answer here..." %>
+			    			<% end %>	
 			    		</ul>
 				    <% end %>	
 			    </td> 

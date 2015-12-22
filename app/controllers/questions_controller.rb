@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
     @subject = @question.subject
   end
 
-  def create
+  def create   
     
     @subjects = Subject.all
     @question = Question.new(question_params)

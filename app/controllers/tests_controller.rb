@@ -1,9 +1,9 @@
 class TestsController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @subject = Subject.find(params[:subject_id])
-    @questions = @subject.questions.sample(4)
+    @questions = @subject.questions.sample(10)
     @test = Test.new
   end
 
@@ -15,10 +15,10 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
-  def create
-    
-    @test = Test.new(test_params)
-    if @test.save     
+  def create    
+    byebug
+    @test = Test.new(test_params)           
+    if @test.save  
     	flash[:success] = "submitted."
     	redirect_to @test
     else
