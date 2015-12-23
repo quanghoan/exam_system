@@ -1,11 +1,11 @@
 <% provide(:title, 'test') %>
 <h1><%= @subject.title %> test</h1>
 <h2>your test is running...</h2>
-<div class="row">
-	<div> <span id="time">05:00</span> minutes</div>
+<div class="row">	
 	<div class="col-md-10 col-md-offset-1">	
+		<div id="timee"></div>
 		<%= form_for @test, url: url_for(controller: 'results', action: 'create') do |f|%>	
-			<%= f.hidden_field :subject_id, value: @subject.id %>
+			<%# f.hidden_field :subject_id, value: @subject.id %>
 			<table border="1" style="width:100%"> 
 			  <tr>
 			    <th>index</th>
@@ -13,33 +13,34 @@
 			    <th>options</th>
 			  </tr> 
 			  <% @questions.each.with_index(1) do |question, index| %>
-			  	<%= f.hidden_field :"question_id[#{question.id}]", value: question.id %>
+			  	<%# f.hidden_field :"question_id[#{question.id}]", value: question.id %>
 			  <tr>
 			    <td><%= "#{index}" %></td>   	
 			    <td><%= question.content %></td>
 			    <td>			    
 			    	<% if question.question_type == 1 %>
-			    		<% question.answers.each.with_index do |answer, index| %>
-		    				<%= f.fields_for :answers_attributes do |builder| %>
+			    		<%# question.answers.each do |answer| %>
+		    				<%# f.fields_for :answers_attributes do |builder| %>
+					    	<% for answer in question.answers %>	
 					    		<ul id="ul">				    	
-					    			<li ><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
-					    				<%= f.hidden_field :answer_id, value: answer.id  %>
+					    			<li><%= radio_button_tag :"answer[#{question.id}]", answer.id %>
+					    				<%# builder.hidden_field :"answer_id[#{question.id}]", value: answer.id %>
 					    				<%= answer.content %>
 					    			</li>		
 						    	</ul>	
 					    	<% end %>
-				    	<% end %>	    		
+				    	<%# end %>	    		
 			    	<% elsif question.question_type == 2 %>		
-			    		<% question.answers.each do |answer| %>
-			    			<%= f.fields_for :answers_attributes do |builder| %> 
+			    		<%# question.answers.each do |answer| %>
+			    			<%# f.fields_for :answers_attributes do |builder| %> 
+			    			<% for answer in question.answers %>
 						    	<ul id="ul"> 
-					    			<li><%= builder.check_box :correct_answer %>
-					    				<%= f.hidden_field :answer_id, value: answer.id  %>
+					    			<li><%= check_box_tag 'answer', answer.id %>					    				
 					    				<%= answer.content %>
 					    			</li>		
 						    	</ul>  
 					    	<% end %>
-				    	<% end %>
+				    	<%# end %>
 				    <% elsif question.question_type == 3 %>
 				    	<ul>
 				    		<%= f.fields_for :answers_attributes do |builder| %>
@@ -49,10 +50,10 @@
 				    <% end %>	
 			    </td> 
 			  </tr> 
-			  <% end %>
+			  <% end %>			  
 			</table>	
 			<%= f.hidden_field :user_id, value: current_user.id %>
-			<%= f.submit 'Submit' , class: "btn btn-primary"%>		
+			<%= f.submit 'Submit' , id: "submit_test", class: "btn btn-primary"%>		
 		<% end %>	
 	</div>
 </div>	

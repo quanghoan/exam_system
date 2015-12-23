@@ -6,7 +6,6 @@ class ResultsController < ApplicationController
   def create
     byebug
   	@result = Result.new(result_params)
-    # Result.create(user_id:, question_id:, answer_id:)
   	if @result.save
   		flash[:success] = "ok"
   		redirect_to @result
@@ -18,7 +17,7 @@ class ResultsController < ApplicationController
   private
 
   def result_params
-  	params.require(:test).permit(:user_id, :question_id, :answer_id)
+  	params.require(:test).permit(:user_id, :answer_id => [])
   end
 
 end
