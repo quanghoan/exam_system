@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
     byebug
   	@result = Result.new(result_params)
   	if @result.save
-  		flash[:success] = "ok"
+  		flash[:success] = "your test submitted."
   		redirect_to @result
   	else
   		flash[:danger] = "failed"
@@ -17,7 +17,6 @@ class ResultsController < ApplicationController
   private
 
   def result_params
-  	params.require(:test).permit(:user_id, :answer_id => [])
+  	params.require(:test).permit(:user_id,:subject_id, :answers_id)
   end
-
 end

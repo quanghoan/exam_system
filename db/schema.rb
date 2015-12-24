@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151217080848) do
     t.integer  "question_id"
     t.string   "content"
     t.boolean  "correct_answer", default: false
+    t.integer  "test_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end

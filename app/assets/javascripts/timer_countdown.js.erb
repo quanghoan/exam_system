@@ -11,16 +11,15 @@ function startTimer(duration, display) {
 
       if (--timer < 0) {
         $('#submit_test').click();
-        alert('submitting...'); 
-        // document.getElementById('#time').style.display = 'none';      
-        // return;
+
+        // alert('submitting...'); 
       }
 
   }, 1000);
 }
 
 window.onload = function () {
-  var timeMinutes = 3,
-      display = document.querySelector('#time');
+  var timeMinutes = 4,
+      display = document.querySelector('#ttime');
   startTimer(timeMinutes, display);
 };

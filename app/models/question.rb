@@ -10,14 +10,14 @@ class Question < ActiveRecord::Base
   attr_accessor :content_short, :content_multi, :content_single
 
   def single_check
-  	self.question_type = 1
+  	self.question_type == 1
   end
 
   def multiple_check
-  	self.question_type = 2
+  	self.question_type == 2
   end
 
   def short_answer
-  	self.question_type = 3
+  	self.question_type == 3
   end
 end

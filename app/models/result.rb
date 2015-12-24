@@ -1,6 +1,12 @@
 class Result < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :question
+	# belongs_to :question
+	belongs_to :subject
 	belongs_to :answer
-	# validates :user_id, presence: true
+	# has_many :answers
+	#accepts_nested_attributes_for :answers
+
+	def score_single
+		
+	end
 end

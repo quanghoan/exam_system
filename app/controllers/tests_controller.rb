@@ -33,6 +33,6 @@ class TestsController < ApplicationController
   private
 
   def test_params
-  	params.require(:test).permit(:subject_id, :user_id)
+  	params.require(:test).permit(:subject_id, :user_id, answers_attributes: [:id, :content, :question_id])
   end
 end
