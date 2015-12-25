@@ -1,9 +1,5 @@
 class ResultsController < ApplicationController
 
-  def index
-    @results = Result.all
-  end
-
   def create
     @results = []
     single_check_id = params[:test][:answers_attributes][:correct_answer]
@@ -26,27 +22,30 @@ class ResultsController < ApplicationController
     answers.each do |answer| 
       questions << answer.question unless questions.include?(answer.question) 
     end 
-    questions # all questions of correct-submitted answer
+    questions # all questions of correct-submitted answers
 
     questions.each do |question|  
       answers.each do |answer| 
         if answer.correct_answer 
-          # all correct answers that not wrong and missed questions
+          # loai bo tat ca wrong answer, bao gom ca correct answer ma co question chua wrong answer  
           true_answers = answers.reject {|answer| question.answers unless answer.correct_answer} 
           true_questions = questions.reject {|question| question unless answer.correct_answer}
+          byebug
         end
       end   
     end
     
     if !true_answers.empty?
       count = 0
-      true_answers.each do |answer|
-        if answer.single
-          count += 1
-        elsif answer.multiple
+      true_questions.each do |question|
+        true_answers.each do |answer|
+          if answer.single
+            count += 1
+          elsif answer.multiple
             if aswer.question
-        end  
-      end
+          end  
+        end
+      end  
     end
   end
 
