@@ -4,7 +4,7 @@
 <div class="row">	
 	<div class="col-md-10 col-md-offset-1">	
 		<div id="time"></div>
-		<%= form_for @test do |f|%>	
+		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
 			<table border="1" style="width:100%"> 
 			  <tr>
 			    <th>index</th>
@@ -21,13 +21,13 @@
 				   		<%# builder.hidden_field :question_id, value: question.id %>
 				    		<% if question.single_check %>					    			   	 	
 					    		<ul id="ul">				    	
-					    			<li><%= builder.radio_button :"answer_id[#{question.id}]", answer.id %>
+					    			<li><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
 					    				<%= builder.label :answer_id, answer.content %>
 					    			</li>		
 						    	</ul>								    	    			
 					    	<% elsif question.multiple_check %>
 						    	<ul id="ul"> 
-					    			<li><%= builder.check_box :"correct_answer[#{answer.id}]" %>	
+					    			<li><%= builder.check_box :"answer_id[#{answer.id}]" %>	
 					    				<%= builder.label :answer_id, answer.content %>
 					    			</li>		
 						    	</ul>  						    	

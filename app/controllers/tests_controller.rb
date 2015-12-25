@@ -20,7 +20,7 @@ class TestsController < ApplicationController
   end
 
   def create    
-    byebug
+    
     @test = Test.new(test_params)           
     if @test.save  
     	flash[:success] = "submitted."
@@ -33,6 +33,6 @@ class TestsController < ApplicationController
   private
 
   def test_params
-  	params.require(:test).permit(:subject_id, :user_id, answers_attributes: [:id, :content, :question_id])
+  	params.require(:test).permit(:subject_id, :user_id, answers_attributes: [:id, :content])
   end
 end

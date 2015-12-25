@@ -1,2 +1,21 @@
-<h1>Results#create</h1>
-<p>Find me in app/views/results/create.html.erb</p>
+
+<% count = 0 %>
+<% answer_ids = @results.pluck(:answer_id) %>
+<% answers = Answer.find(answer_ids) %> 
+<% questions = [] %>
+<% answers.each do |answer| %>
+	<% questions << answer.question unless questions.include?(answer.question) %>
+<% end %>
+<% questions %>
+<% end %>
+<% true_answers.each do |answer| %>
+	<% if answer.single %>
+		<% count += 1 if answer.correct_answer %>
+	<% else %>	
+		<% if !answer.correct_answer %>
+			<%  %>
+		<% end %>	
+	<% end %>	
+<% end %> 
+<%= count %>
+
