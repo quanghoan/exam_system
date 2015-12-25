@@ -30,23 +30,28 @@ class ResultsController < ApplicationController
           # loai bo tat ca wrong answer, bao gom ca correct answer ma co question chua wrong answer  
           true_answers = answers.reject {|answer| question.answers unless answer.correct_answer} 
           true_questions = questions.reject {|question| question unless answer.correct_answer}
-          byebug
         end
       end   
     end
-    
+    return true_answers
+    return true_questions
+
     if !true_answers.empty?
-      count = 0
-      true_questions.each do |question|
-        true_answers.each do |answer|
-          if answer.single
-            count += 1
+      score = 0
+      true_questions.each do |que|
+        true_answers.each do |ans|
+          if ans.single
+            score += 1
           elsif answer.multiple
-            if aswer.question
+            if ans.question.answers.where(correct_answer: true).count = que.answer.count
+              score += 1
+            end
           end  
         end
       end  
     end
+    score
+    byebug
   end
 
   private
