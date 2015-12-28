@@ -1,8 +1,8 @@
 <% 4.times do |t| %>
-	<p>
+	<p>  
 		<%= f.label :"[#{t}][content]", "Answer" %>
 		<%= f.text_field :"[#{t}][content]" %>
-		<%= f.radio_button :"[1]correct_answer", "#{t}"  %>
+		<%= f.radio_button :"[1][correct_answer]", "#{t}"  %>
 		<%= f.label :"[#{t}][correct_answer]", "Correct answer" %> 
 	</p>
 <% end %>	

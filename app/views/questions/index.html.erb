@@ -29,8 +29,8 @@
 		    	</ul>	
 		    </td> 
 		    <td><%= question.subject.title  %></td>
-		    <td><%= link_to "Edit",edit_question_path(question) %>
-		  			| <%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
+		    <td>
+		  		<%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
 		  </tr> 
 		  <% end %>

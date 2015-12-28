@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  # before_action :admin_user
+  before_action :admin_user
   def new
   	@subject = Subject.new
   end

@@ -7,7 +7,6 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
   has_many :answers, dependent: :destroy, inverse_of: :question
   accepts_nested_attributes_for :answers
-  attr_accessor :content_short, :content_multi, :content_single
 
   def single_check
   	self.question_type == 1

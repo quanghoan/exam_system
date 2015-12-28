@@ -1,21 +1,8 @@
+<h1>your score</h1>
+<div class="col-md-6 col-md-offset-3">
+	<strong > your result: <h3><%= @score %>/20</h3></strong>
+</div>	
 
-<% count = 0 %>
-<% answer_ids = @results.pluck(:answer_id) %>
-<% answers = Answer.find(answer_ids) %> 
-<% questions = [] %>
-<% answers.each do |answer| %>
-	<% questions << answer.question unless questions.include?(answer.question) %>
-<% end %>
-<% questions %>
-<% end %>
-<% true_answers.each do |answer| %>
-	<% if answer.single %>
-		<% count += 1 if answer.correct_answer %>
-	<% else %>	
-		<% if !answer.correct_answer %>
-			<%  %>
-		<% end %>	
-	<% end %>	
-<% end %> 
-<%= count %>
+
+
 
