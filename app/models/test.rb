@@ -1,4 +1,5 @@
 class Test < ActiveRecord::Base
+  has_many :grade
   belongs_to :subject
   belongs_to :user
   has_many :answers, dependent: :destroy

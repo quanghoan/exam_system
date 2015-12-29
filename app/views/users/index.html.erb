@@ -1,21 +1,18 @@
 <% provide(:title, 'Users') %>
 <h1> Users List</h1>	
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-6 col-md-offset-3">
 		<%= link_to "New user", new_user_path, class: "btn btn-success" %>
 		<table border="1" style="width:100%">	
 		  <tr>
 		    <th>user name</th>		
-		    <th>test</th>
-		    <th>result</th>
+		   
 		    <th>actions</th>
 		  </tr>
 		  <% @users.each.with_index(1) do |user| %>
 		  	<% unless user.admin? %>
 				  <tr>   	
 				    <td><%= user.name %></td>
-				    <td><%=  %></td>
-				    <td><%=  %></td> 
 				    
 				    <td><%= link_to "Edit", edit_user_path(user) %>
 				  	| <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %>

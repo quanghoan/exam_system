@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :grades
   has_many :results
 	has_many :tests, dependent: :destroy
   attr_accessor :remember_token

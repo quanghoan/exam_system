@@ -1,6 +1,6 @@
 function startTimer(duration, display) {
   var timer = duration, minutes, seconds;
-  setInterval(function () {
+  var setIntvalID = setInterval(function () {
       minutes = parseInt(timer / 60, 10)
       seconds = parseInt(timer % 60, 10);
 
@@ -10,16 +10,16 @@ function startTimer(duration, display) {
       display.textContent = minutes + ":" + seconds;
 
       if (--timer < 0) {
-        $('#submit_test').click();
-
-        // alert('submitting...'); 
+        clearInterval(setIntvalID);
+        // alert('Time is over. Your test is automatically submitted.');
+        // $('#submit_test').click(); 
       }
-
   }, 1000);
 }
 
-window.onload = function () {
+window.onload = function() {
   var timeMinutes = 10,
-      display = document.querySelector('#ttime');
-  startTimer(timeMinutes, display);
+    display = document.querySelector('#time');
+    startTimer(timeMinutes, display);
 };
+

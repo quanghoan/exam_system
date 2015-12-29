@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :admin_user, only: [:destroy, :edit, :new, :update]   
+  before_action :admin_user, only: [:destroy, :edit, :new, :update, :index]   
   def new
     @user = User.new
   end

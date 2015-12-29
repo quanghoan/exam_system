@@ -1,6 +1,10 @@
 <h1>your score</h1>
 <div class="col-md-6 col-md-offset-3">
-	<strong > your result: <%= @score %>/5</strong>
+	<strong> Ckecked-result: <%= @score %>/5</strong>
+	<p>Your short answer: </p>
+	<% @hash.each do |ques, cont| %>
+		<li><p><%= ques  %><strong> <%= cont %></strong></p></li>
+	<% end %>	
 </div>	
 
 

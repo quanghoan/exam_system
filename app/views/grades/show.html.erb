@@ -1,0 +1,10 @@
+<h1>your score</h1>
+<div class="col-md-6 col-md-offset-3">
+	
+	<strong> Ckecked-result: <%= @grade.score %>/5</strong>
+	<p>Your short answer: </p>
+	<% @grade.short_question.each do |ques, cont| %>
+		<li><p><%= ques %><strong><%=  cont %> </strong></p></li>
+	<% end %>	
+	Tested <%= time_ago_in_words(@grade.created_at) %> ago
+</div>	
