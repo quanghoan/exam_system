@@ -9,7 +9,7 @@ class ResultsController < ApplicationController
     checked = multiple_check_id.select {|key,val| val =="1"} 
     string_array2 = checked.map {|key,val| key}
     array_id2 = string_array2.map(&:to_i) 
-  	        
+            
     @score1 = 0
     single_answers = Answer.find(array_id1) unless array_id1.nil?
     if !single_answers.nil?
@@ -29,8 +29,8 @@ class ResultsController < ApplicationController
     array_an = array_ans.map {|key,val| val} 
     @score2 = 0
     array_multis.each do |ans|
-      array_an.each do |an|
-        @score2 += 1 if ans == an
+      true_answers.each do |an|
+        @score2 += 0.5 if ans == an.question.answers.where(correct_answer: true)
       end 
     end  
     @score = @score1 + @score2  

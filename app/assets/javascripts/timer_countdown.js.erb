@@ -14,12 +14,16 @@ function startTimer(duration, display) {
         // alert('Time is over. Your test is automatically submitted.');
         // $('#submit_test').click(); 
       }
+
   }, 1000);
 }
-
-window.onload = function() {
-  var timeMinutes = 10,
+$(document).on("page:change", function() {
+  var timeMinutes = 60*3,
     display = document.querySelector('#time');
     startTimer(timeMinutes, display);
-};
+});
+
+
+
+
 
