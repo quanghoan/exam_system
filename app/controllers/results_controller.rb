@@ -22,13 +22,15 @@ class ResultsController < ApplicationController
     true_answers = []
     multi_answers.each do |answer|
       true_answers << answer if answer.correct_answer
-    end            
+    end         
+    multis = multi_answers.group_by {|multi| multi.question_id}
+    array_multis = multis.map {|key, val| val} 
     array_ans = true_answers.group_by {|an| an.question_id } 
-    array_an = array_ans.map {|key,val| val}
+    array_an = array_ans.map {|key,val| val} 
     @score2 = 0
-    true_answers.each do |ans|
+    array_multis.each do |ans|
       array_an.each do |an|
-        @score2 += 0.5 if ans.question.answers.where(correct_answer: true) == an
+        @score2 += 1 if ans == an
       end 
     end  
     @score = @score1 + @score2  
