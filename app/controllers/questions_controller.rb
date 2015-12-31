@@ -3,13 +3,8 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new 
-    @subject = @question.subject
-    4.times {@question.answers.build}
+    @subject = @question.subject 
     @subjects = Subject.all 
-    respond_to do |format| 
-      format.html {}              
-      format.js {}
-    end
   end
 
   def index
@@ -23,14 +18,14 @@ class QuestionsController < ApplicationController
     @subject = @question.subject
   end
 
-  def create   
-    
+  def create 
+    byebug   
     @subjects = Subject.all
     @question = Question.new(question_params)
     if @question.save
-      flash[:success] = "added a question."
+      flash[:success] = "Added a question."
       redirect_to subject_path(@question.subject)      
-    else
+    else 
       render 'new'   
     end
   end

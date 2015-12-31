@@ -7,7 +7,7 @@
 				<p>
 					<%= f.label :"[#{i}][answer]", "Answer" %> 
 					<%= f.text_field :"[#{i}][content]" %>
-					<%= f.radio_button :"[#{i}][correct_answer]", "#{i}" %>
+					<%= f.radio_button :"[i][correct_answer]", "#{i}" %>
 					<%= f.label :"[#{i}][correct_answer]", "Correct Answer" %>
 				</p>  
 			<% end %>	

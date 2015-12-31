@@ -3,8 +3,10 @@
 	
 	<strong> Ckecked-result: <%= @grade.score %>/5</strong>
 	<p>Your short answer: </p>
-	<% @grade.short_question.each do |ques, cont| %>
-		<li><p><%= ques %><strong><%=  cont %> </strong></p></li>
+	<% if !@grade.short_question.nil? %>
+		<% @grade.short_question.each do |ques, cont| %>
+			<li><p><%= ques %><strong>  <%= cont %> </strong></p></li>
+		<% end %>	
 	<% end %>	
 	Tested <%= time_ago_in_words(@grade.created_at) %> ago
 </div>	

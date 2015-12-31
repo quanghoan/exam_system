@@ -1,7 +1,9 @@
 class ResultsController < ApplicationController
 
   def create
-    if !(params[:test][:answers_attributes]).nil?
+    if (params[:test][:answers_attributes]).nil?
+      flash[:danger] = " No answer found."
+    else  
       flash[:success] = " Test submitted."
       single_check_id = params[:test][:answers_attributes][:correct_answer]      
       single_array1 = single_check_id.map {|key,val| val} unless single_check_id.nil?
@@ -39,7 +41,7 @@ class ResultsController < ApplicationController
       else 
         @score = @score1  
       end
-
+      subject_id = params[:test][:subject_id].to_i
       if !params[:test][:answers_attributes][:content].nil?
         array_short = params[:test][:answers_attributes][:content]
         contents = array_short.map {|id, content| content}
@@ -50,10 +52,11 @@ class ResultsController < ApplicationController
         short_ques.each do |ques|
           short_content << ques.content
         end
-        @hash = Hash[short_content.zip(contents)]
-        subject_id = params[:test][:subject_id].to_i
-        Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
+        @hash = Hash[short_content.zip(contents)] 
+      else
+        @hash = nil
       end
+      Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
     end
   end
 end

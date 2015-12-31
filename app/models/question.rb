@@ -20,5 +20,4 @@ class Question < ActiveRecord::Base
   def short_answer
   	self.question_type == 3
   end
-
 end
