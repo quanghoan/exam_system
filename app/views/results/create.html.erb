@@ -2,8 +2,12 @@
 <div class="col-md-6 col-md-offset-3">
 	<strong> Ckecked-result: <%= @score %>/5</strong>
 	<p>Your short answer: </p>
-	<% @hash.each do |ques, cont| %>
-		<li><p><%= ques  %><strong> <%= cont %></strong></p></li>
+	<% if @hash.nil? %>	
+			<%= 0 %>
+	<% else %>
+		<% @hash.each do |ques, cont| %>
+			<li><p><%= ques  %><strong> <%= cont %></strong></p></li>
+		<% end %>	
 	<% end %>	
 </div>	
 

@@ -2,7 +2,6 @@
 <h1><%= @subject.title %></h1>	
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<%= link_to "add question", new_question_path, class: "btn btn-success" %>
 		<table border="1" style="width:100%"> 
 		  <tr>
 		    <th>index</th>
@@ -29,8 +28,8 @@
 		    	</ul>
 		    </td> 
 		    <td><%=question.subject.title  %></td>
-		    <td><%= link_to "Edit",edit_question_path(question) %>
-		  			| <%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
+		    <td>
+		  		<%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
 		  </tr> 
 		  <% end %>

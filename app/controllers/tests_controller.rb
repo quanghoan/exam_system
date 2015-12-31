@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
 
   def new
-    # @user = User.find(params[:user_id])
     @subject = Subject.find(params[:subject_id])
     @questions = @subject.questions.sample(5)
     @test = Test.new

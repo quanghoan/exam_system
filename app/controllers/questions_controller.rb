@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new 
     @subject = @question.subject
-    @answers = @question.answers.build
+    4.times {@question.answers.build}
     @subjects = Subject.all 
     respond_to do |format| 
       format.html {}              

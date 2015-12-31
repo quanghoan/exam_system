@@ -7,6 +7,7 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
   has_many :answers, dependent: :destroy, inverse_of: :question
   accepts_nested_attributes_for :answers
+  default_scope -> {order(created_at: :desc)}
 
   def single_check
   	self.question_type == 1
@@ -19,4 +20,5 @@ class Question < ActiveRecord::Base
   def short_answer
   	self.question_type == 3
   end
+
 end
