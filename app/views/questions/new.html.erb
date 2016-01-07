@@ -7,7 +7,7 @@
 			<% if @question.errors.any? %>
 			  <div id="error_explanation">
 			    <div class="alert alert-danger">
-			      The form contains <%= pluralize(@question.errors.count, "question") %>.
+			      The form contains <%= pluralize(@question.errors.count, "error") %>.
 			    </div>
 			    <ul>
 			    <% @question.errors.full_messages.each do |msg| %>
@@ -28,7 +28,7 @@
 	  			<%= render inline: "" %>
 	  		</div>
 	  		<div id="radio-answer">
-		  		<%= render inline: "" %>	
+		  		<%= render 'questions/radio_question' %>	
 		  	</div>	
 		  	<div id="multi-answer">  	
 		  		<%= render inline: "" %>
