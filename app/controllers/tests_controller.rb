@@ -2,7 +2,7 @@ class TestsController < ApplicationController
 
   def new
     @subject = Subject.find(params[:subject_id])
-    @questions = @subject.questions.sample(5)
+    @questions = @subject.questions.sample(20)
     @test = Test.new
     respond_to do |format|
       format.js {}

@@ -1,46 +1,34 @@
 <% provide(:title, 'test') %>
 <h1><%= @subject.title %> test</h1>
 <div class="row">	
-	<div class="col-md-10 col-md-offset-1">	
-		<h2>your test is running...</h2><span id="time"></span>
+	<div class="col-md-10 col-md-offset-1 ">	
+		<span id="time"></span>
 		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
-			<table border="1" style="width:100%"> 
-			  <tr>
-			    <th>index</th>
-			    <th>question</th>		
-			    <th>options</th>
-			  </tr> 
+
 			  <% @questions.each.with_index(1) do |question, index| %>
-			  <tr>
-			    <td><%= "#{index}" %></td>   	
-			    <td><%= question.content %></td>
-			    <td>	
-			    	<%= f.fields_for :answers_attributes do |builder| %>
-			    		<% if question.short_answer %>
-				    			<ul>
-						    		<%= builder.text_area :"content[#{question.id}]", cols: 50, placeholder: "write your answer here..." %>
-						    	</ul>	
-						  <% end %>  	
-			    		<% question.answers.each do |answer| %>					   		  					    			   	 	
-						    <% if question.multiple_check %> 			  	
-					    		<ul id="ul">	
-					    			<li><%= builder.check_box :"answer_id[#{answer.id}]" %>	
-					    				<%= builder.label :answer_id, answer.content %>
-					    			</li>		
-						    	</ul>									    	    			
-					    	<% elsif question.single_check %>
-					    		<ul id="ul">				    	
-					    			<li><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
-					    				<%= builder.label :answer_id, answer.content %>
-					    			</li>		
-						    	</ul>				    
-							  <% end %> 
-							<% end %>   
-						<% end %>  
-			    </td> 
-			  </tr> 
+			  <%= "#{index}" %>.   	
+			  <%= question.content %>			  	
+		    	<%= f.fields_for :answers_attributes do |builder| %>
+		    		<% if question.short_answer %>
+					    <%= builder.text_area :"content[#{question.id}]", cols: 50, placeholder: "write your answer here..." %>
+					  <% end %>  	
+		    		<% question.answers.each do |answer| %>					   		  					    			   	 	
+					    <% if question.multiple_check %> 			  	
+				    		<ul id="ul">	
+				    			<li><%= builder.check_box :"answer_id[#{answer.id}]" %>	
+				    				<%= builder.label :answer_id, answer.content %>
+				    			</li>		
+					    	</ul>									    	    			
+				    	<% elsif question.single_check %>
+				    		<ul id="ul">				    	
+				    			<li><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
+				    				<%= builder.label :answer_id, answer.content %>
+				    			</li>		
+					    	</ul>				    
+						  <% end %> 
+						<% end %>   
+					<% end %>  
 			  <% end %>		  
-			</table>	
 			<%= f.hidden_field :subject_id, value: @subject.id %>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.submit 'Submit', id: "submit_test", class: "btn btn-primary"%>		

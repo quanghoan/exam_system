@@ -1,9 +1,10 @@
 class ResultsController < ApplicationController
 
   def create
+    
     if (params[:test][:answers_attributes]).nil?
       flash[:danger] = " No answer found."
-    else  
+    else    
       flash[:success] = " Test submitted."
       single_check_id = params[:test][:answers_attributes][:correct_answer]      
       single_array1 = single_check_id.map {|key,val| val} unless single_check_id.nil?

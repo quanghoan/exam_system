@@ -18,9 +18,11 @@ class QuestionsController < ApplicationController
     @subject = @question.subject
   end
 
-  def create 
-    byebug   
-    @subjects = Subject.all
+  def create    
+    index = params[:answers_attributes][:i][:correct_answer]
+    correct_index = params[:answers_attributes][index]
+    correct_index = correct_index.update({correct_answer: true})
+    params[:answers_attributes].delete(:i)
     @question = Question.new(question_params)
     if @question.save
       flash[:success] = "Added a question."

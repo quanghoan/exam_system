@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'auth/:provider/callback', to: 'sessions#createfb'
+  get 'auth/failure', to: redirect('/')  
+  get 'logout', to: 'sessions#destroyfb'
+
   get 'sessions/new'
   root 'static_pages#home'
   get 'signup'  => 'users#new'

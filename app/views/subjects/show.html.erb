@@ -1,13 +1,12 @@
 <% provide(:title, 'subject') %>
-<h1><%= @subject.title %></h1>	
+<h1><%= @subject.title  %></h1>	
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-12 ">
 		<table border="1" style="width:100%"> 
 		  <tr>
 		    <th>index</th>
 		    <th>question</th>		
 		    <th> answers</th>
-		    <th>subject</th>
 		    <th>action</th>
 		  </tr>
 		  <% @questions.each.with_index(1) do |question, index| %>
@@ -27,7 +26,6 @@
 		    		<% end %>	
 		    	</ul>
 		    </td> 
-		    <td><%=question.subject.title  %></td>
 		    <td>
 		  		<%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 

@@ -3,7 +3,7 @@
 		<%= text_area_tag 'content', nil, :cols => "50", placeholder: "Create new question here..." %>		
 		<%= hidden_field_tag :question_type, 1 %>
 		<%= fields_for :answers_attributes do |f| %>
-			<% 4.times do |i| %> 
+			<% 4.times do |i| %>
 				<p>
 					<%= f.label :"[#{i}][answer]", "Answer" %> 
 					<%= f.text_field :"[#{i}][content]" %>

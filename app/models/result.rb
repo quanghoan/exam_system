@@ -3,6 +3,5 @@ class Result < ActiveRecord::Base
 	belongs_to :question
 	belongs_to :subject
 	belongs_to :answer
-	# has_many :answers
 	#accepts_nested_attributes_for :answers
 end

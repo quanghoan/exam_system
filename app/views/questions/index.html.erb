@@ -1,7 +1,7 @@
 <% provide(:title, 'Question list') %>
 <h1> Question list</h1>	
 <div class="row">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-12 ">
 		<%= link_to "new question", new_question_path, class: "btn btn-success" %>
 		<table border="1" style="width:100%"> 	
 		  <tr>
@@ -28,7 +28,7 @@
 		    		<% end %>	
 		    	</ul>	
 		    </td> 
-		    <td><%= question.subject.title  %></td>
+		    <td><%= link_to question.subject.title, question.subject  %></td>
 		    <td>
 		  		<%= link_to "Delete", question, method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
