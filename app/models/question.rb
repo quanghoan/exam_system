@@ -8,7 +8,6 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy, inverse_of: :question
   accepts_nested_attributes_for :answers
   
-
   def single_check
   	self.question_type == 1
   end

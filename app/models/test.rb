@@ -1,4 +1,5 @@
 class Test < ActiveRecord::Base
+	belongs_to :time_info
   belongs_to :subject
   belongs_to :user
   has_many :answers, dependent: :destroy

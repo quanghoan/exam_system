@@ -2,7 +2,13 @@
 <h1><%= @subject.title %> test</h1>
 <div class="row">	
 	<div class="col-md-10 col-md-offset-1 ">	
-		<span id="time"></span>
+		<div data-pjax-container>
+			<div style="float: left; position:fixed; top:80px; right:1100px;">		
+				<span id="time_left"> 
+					<%= second_to_time("600".to_i - (Time.now - @time_info.start_time).to_i)%> 
+				</span>
+			</div>
+		</div>		
 		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
 
 			  <% @questions.each.with_index(1) do |question, index| %>

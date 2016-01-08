@@ -1,5 +1,5 @@
 <div class="col-md-12 form-actions" data-id="2">
-	<%= text_area_tag 'content', nil,:cols => "50", placeholder: "Create new question here..." %>
+	<%= text_area_tag 'content', nil,:cols => "50",  placeholder: "Create new question here..." %>
 	<%= hidden_field_tag 'question_type', 2 %>
 	<%= fields_for :answers_attributes do |f| %>							
 		<%= render 'answer', f: f %>

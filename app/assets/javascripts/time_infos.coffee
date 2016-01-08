@@ -34,7 +34,7 @@ jQuery ->
   seconds = undefined
   timeLeft = undefined
   countDown = undefined
-  timeLeft = $('#time')
+  timeLeft = $('#time_left')
   if !timeLeft.length
     return
   seconds = hhmmssToSecond(timeLeft.text())
@@ -43,8 +43,8 @@ jQuery ->
     seconds = seconds - 1
     if seconds < 0
       clearInterval id
-      $('#submit_answer_sheet').click()
-      alert 'Exam time has expired, your examination will be submitted automatically'
+      $('#submit_test').click()
+      alert 'Exam time has expired, test will be automatically submitted .'
       return
     timeLeft.text secondToHHMMSS(seconds)
     return

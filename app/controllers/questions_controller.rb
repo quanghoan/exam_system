@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @subjects = Subject.all
-  end
+  end  
 
   def create    
     if !params[:answers_attributes].nil? && !params[:answers_attributes][:i].nil?

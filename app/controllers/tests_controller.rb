@@ -2,33 +2,11 @@ class TestsController < ApplicationController
 
   def new
     @subject = Subject.find(params[:subject_id])
+    @time_info = TimeInfo.find(params[:time_info_id])
     @questions = @subject.questions.sample(20)
     @test = Test.new
-    respond_to do |format|
-      format.js {}
-      format.html {}
-    end
   end
-
-  def index
-  	@tests = Test.all
-  end
-
-  def show    
-    @test = Test.find(params[:id])
-  end
-
-  def create    
-    
-    @test = Test.new(test_params)           
-    if @test.save  
-    	flash[:success] = "submitted."
-    	redirect_to @test
-    else
-      flash[:danger] = "failed" 
-    end
-  end
-
+ 
   private
 
   def test_params

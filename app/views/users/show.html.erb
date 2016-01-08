@@ -11,12 +11,16 @@
 		    <th>Ready</th>
 		  </tr>
 		  <% @subjects.each.with_index(1) do |subject, index| %>
-		  <tr>
+		  <tr> 
 		    <td><%= "#{index}" %></td>   	
 		    <td><%= subject.title %></td>
 		    <td><%= 20  %></td> 	
 		    <td><%= 60  %> minutes</td>
-		    <td><%= link_to "START", new_test_path( subject_id: subject.id, user_id: current_user.id ), id: "start" , class: "btn btn-success" %></td>
+		    <td><%= form_for TimeInfo.new do |f| %>
+		    	<%= f.hidden_field :start_time, value: Time.now %>
+		    	<%= f.hidden_field :subject_id, value: subject.id %>
+		    	<%= f.submit "START", class: "btn btn-success" %>
+		    <% end %>	</td>
 		  </tr> 
 		  <% end %>
 		</table>
