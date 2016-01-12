@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require redirect_on_back
 //= require_tree .

@@ -3,7 +3,16 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new 
-    @subject = @question.subject 
+    @subjects = Subject.all 
+  end
+
+  def new3
+    @question = Question.new  
+    @subjects = Subject.all 
+  end
+
+  def new2
+    @question = Question.new 
     @subjects = Subject.all 
   end
 
@@ -12,7 +21,8 @@ class QuestionsController < ApplicationController
     @subjects = Subject.all
   end  
 
-  def create    
+  def create     
+    # byebug 
     if !params[:answers_attributes].nil? && !params[:answers_attributes][:i].nil?
       index = params[:answers_attributes][:i][:correct_answer]
       correct_index = params[:answers_attributes][index]
@@ -24,8 +34,15 @@ class QuestionsController < ApplicationController
     if @question.save
       flash[:success] = "Added a question."
       redirect_to subject_path(@question.subject)      
-    else 
-      render 'new'   
+    else
+      # byebug
+      if params[:question_type].to_i == 1
+        render 'new'
+      elsif params[:question_type].to_i == 2 
+        render 'new2'
+      elsif params[:question_type].to_i == 3
+        render 'new3'
+      end
     end
   end
 

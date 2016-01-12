@@ -1,17 +1,14 @@
 <% provide(:title, 'test') %>
 <h1><%= @subject.title %> test</h1>
 <div class="row">	
-	<div class="col-md-10 col-md-offset-1 ">	
-		<div data-pjax-container>
+	<div class="col-md-10 col-md-offset-1 ">					
+		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
 			<div style="float: left; position:fixed; top:80px; right:1120px;">		
 				<span id="time_left"> 
 					<%= second_to_time("600".to_i - (Time.now - @time_info.start_time).to_i)%> 
 				</span>
 			</div>
-		</div>		
-		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
-
-			  <% @questions.each.with_index(1) do |question, index| %>
+		  <% @questions.each.with_index(1) do |question, index| %>
 			  <%= "#{index}" %>.   	
 			  <%= question.content %>			  	
 		    	<%= f.fields_for :answers_attributes do |builder| %>
@@ -33,12 +30,11 @@
 					    	</ul>				    
 						  <% end %> 
 						<% end %>   
-					<% end %>  
-			  <% end %>		  
+				<% end %>  	
+			<% end %>	  
 			<%= f.hidden_field :subject_id, value: @subject.id %>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.submit 'Submit', id: "submit_test", class: "btn btn-primary"%>		
 		<% end %>	
-		</div>
 	</div>
 </div>	

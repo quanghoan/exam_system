@@ -59,5 +59,6 @@ class ResultsController < ApplicationController
       end
       Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
     end
+    redirect_on_back_to logout_path
   end
 end
