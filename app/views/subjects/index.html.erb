@@ -1,25 +1,40 @@
 <% provide(:title, 'Subject list') %>
 <h1> Subject list</h1>	
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-10 col-md-offset-1">
 		<%= link_to "New subject", new_subject_path, class: "btn btn-success" %>
 		<table border="1" style="width:100%">	
+		  
 		  <tr>
 		    <th>index</th>
 		    <th>subject</th>		
 		    <th>number of questions</th>
+		    <th>examinees</th>
 		    <th>actions</th>
+		    <th>status</th>
 		  </tr>
 		  <% @subjects.each.with_index(1) do |subject, index| %>
 		  <tr>
 		    <td><%= "#{index}" %></td>   	
-		    <td><%=link_to subject.title, subject %></td>
+		    <td><%= link_to subject.title, subject %></td>
 		    <td><%= subject.questions.count  %></td> 	
-
+		    <td><%= link_to subject.users.count, user_subject_path(subject) %></td>
 		    <td><%= link_to "Edit", edit_subject_path(subject) %>
-		    	| <%= link_to " View", subject %>
+		    	|<%= link_to " View", subject %>
 		  		|<%= link_to " Delete", subject, method: :delete, data: { confirm: " You sure?" } %>
 		  	</td> 
+		  	<td>
+		  		<%= form_for subject, url: update_status_subject_path(subject) do |f| %>
+		  			<% case subject.status %>
+		  			<% when "Started" %>	
+		  				<%= f.hidden_field :status, value: "Ready" %>
+		  				<%= f.submit "Opening", class: "btn btn-primary" %>
+		  			<% when "Ready" %>
+		  				<%= f.hidden_field :status, value: "Started" %>
+		  				<%= f.submit "Closed" %>
+		  			<% end %>		
+		  		<% end %>	
+		  	</td>
 		  </tr> 
 		  <% end %>
 		</table>

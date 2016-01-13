@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @subjects = Subject.all
+    @subjects = @user.subjects
   end
 
   def create

@@ -3,9 +3,11 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      flash[:success] = "Welcome."
       log_in user
       remember user
       redirect_to current_user
+      LoginAttempt.create(message: true, user_id: user.id)
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -21,7 +23,6 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id 
     redirect_to current_user
-
   end
 
   def destroyfb

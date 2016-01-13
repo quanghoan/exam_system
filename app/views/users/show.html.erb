@@ -8,7 +8,7 @@
 		    <th>subject</th>		
 		    <th>number of questions</th>
 		    <th>time</th>
-		    <th>Ready</th>
+		    <th>Status</th>
 		  </tr>
 		  <% @subjects.each.with_index(1) do |subject, index| %>
 		  <tr> 
@@ -16,11 +16,18 @@
 		    <td><%= subject.title %></td>
 		    <td><%= 20  %></td> 	
 		    <td><%= 60  %> minutes</td>
-		    <td><%= form_for TimeInfo.new do |f| %>
-		    	<%= f.hidden_field :start_time, value: Time.now %>
-		    	<%= f.hidden_field :subject_id, value: subject.id %>
-		    	<%= f.submit "START", class: "btn btn-success" %>
-		    <% end %>	</td>
+		    <td>
+		    	<% case subject.status %>
+		    	<% when "Started" %>
+			    	<%= form_for TimeInfo.new do |f| %>
+				    	<%= f.hidden_field :start_time, value: Time.now %>
+				    	<%= f.hidden_field :subject_id, value: subject.id %>
+				    	<%= f.submit "START", class: "btn btn-primary" %>
+			    	<% end %>	
+			    <% when "Ready" %>
+			    	<%= "This test is not available now." %>
+			    <% end %>		
+		    </td>
 		  </tr> 
 		  <% end %>
 		</table>

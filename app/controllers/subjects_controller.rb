@@ -37,6 +37,13 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def update_status
+    @subject = Subject.find(params[:id])
+    if @subject.update_attributes(update_status_params) 
+      redirect_to subjects_url
+    end
+  end
+
   def destroy
   	Subject.find(params[:id]).destroy  
     flash[:success] = "subject deleted!"
@@ -47,5 +54,9 @@ class SubjectsController < ApplicationController
 
   def subject_params
   	params.require(:subject).permit(:title)
+  end
+
+  def update_status_params
+    params.require(:subject).permit(:status)
   end
 end
