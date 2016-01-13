@@ -19,7 +19,8 @@
 		    <td><%= link_to subject.title, subject %></td>
 		    <td><%= subject.questions.count  %></td> 	
 		    <td><%= link_to subject.users.count, user_subject_path(subject) %></td>
-		    <td><%= link_to "Edit", edit_subject_path(subject) %>
+		    <td><%= link_to "Add users ", user_subject_path(subject) %>
+		    	|<%= link_to " Edit", edit_subject_path(subject) %>
 		    	|<%= link_to " View", subject %>
 		  		|<%= link_to " Delete", subject, method: :delete, data: { confirm: " You sure?" } %>
 		  	</td> 

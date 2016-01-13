@@ -6,17 +6,23 @@
 		<table border="1" style="width:100%">	
 		  <tr>
 		    <th>user name</th>		
-		   <th> number of subjects</th>
+		    <th> subjects</th>
 		    <th>actions</th>
+		    <th>status</th>
 		  </tr>
 		  <% @users.each.with_index(1) do |user| %>
 		  	<% unless user.admin? %>
 				  <tr>   	
 				    <td><%= user.name %></td>
-				    <td><%= user.subjects.count %></td>
+				    <td>
+				    	<% user.subjects.each do |subject| %>
+				    		<%= subject.title %>
+				    	<% end %>	
+				    </td>
 				    <td><%= link_to "Edit", edit_user_path(user) %>
 				  	| <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %>
 				  	</td> 
+				  	<td><%= "#"%></td>
 		  		</tr> 
 		  	<% end %>	
 		  <% end %>

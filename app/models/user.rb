@@ -15,6 +15,12 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
+  def login_limit?
+    if !self.admin?
+      self.login_attempts.count > 0
+    end 
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
