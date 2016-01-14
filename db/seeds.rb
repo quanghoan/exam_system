@@ -13,5 +13,4 @@ User.create!(name:  "user1",
              password:              "123456",
              password_confirmation: "123456",
              address: "hanoi",
-             dob: '22.2.92',
              phone: '0102033')

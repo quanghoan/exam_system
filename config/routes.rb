@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'login_attempt/update'
+
   get 'auth/:provider/callback', to: 'sessions#createfb'
   get 'auth/failure', to: redirect('/')  
   get 'logout', to: 'sessions#destroyfb'
@@ -10,7 +12,11 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users
+  resources :users do 
+    member do 
+      patch :user_status
+    end
+  end
   resources :tests   
   resources :questions
   resources :subjects do 

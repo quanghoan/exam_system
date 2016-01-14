@@ -1,25 +1,33 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "exam", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-
-        <% if logged_in? %>        
-          <% if current_user.admin? %>
+    <% if logged_in? %>        
+      <% if current_user.admin? %>
+        <%= link_to "exam", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
             <li><%=link_to current_user.name, current_user %>
             <li><%= link_to "Subjects", subjects_path %></li>
             <li><%= link_to "Questions", questions_path %></li>
             <li><%= link_to "Score", grades_path %></li>
             <li><%= link_to "Users", users_path %></li>
-          <% else %> 
+            <li><%= link_to "Log out", logout_path, method: "delete" %>
+          </ul>
+        </nav>    
+      <% else %> 
+        <%= link_to "exam", "#", id: "logo" %>
+          <ul class="nav navbar-nav navbar-right">
             <li><%= link_to current_user.name, "#" %> 
-          <% end %>  
-          <li><%= link_to "Log out", logout_path, method: "delete" %>
-              </li>      
-        <% else %>
+            <li><%= link_to "Log out", logout_path, method: "delete" %>
+          </ul> 
+        </nav>   
+      <% end %>           
+    <% else %>
+      <%= link_to "exam", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+        </ul> 
+      </nav>   
+    <% end %> 
   </div>
 </header>

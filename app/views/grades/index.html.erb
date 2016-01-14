@@ -11,15 +11,17 @@
 		    <th>actions</th>
 		  </tr>
 		  <% @grades.each do |grade| %>
-			  <tr>   	
-			    <td><%= grade.user.name %></td>
-			    <td><%= grade.subject.title %></td>
-			    <td><%= link_to grade.score, grade %></td> 
-			    <td><%= time_ago_in_words(grade.created_at) %> ago</td>
-			    <td>
-			  		<%= link_to "Delete", grade, method: :delete, data: { confirm: "You sure?" } %>
-			  	</td> 
-	  		</tr> 	
+		  	<% if !grade.subject.nil? %>
+				  <tr>   	
+				    <td><%= grade.user.name %></td>
+				    <td><%= grade.subject.title %></td>
+				    <td><%= link_to grade.score, grade %></td> 
+				    <td><%= time_ago_in_words(grade.created_at) %> ago</td>
+				    <td>
+				  		<%= link_to "Delete", grade, method: :delete, data: { confirm: "You sure?" } %>
+				  	</td> 
+		  		</tr> 	
+		  	<%end%>	
 		  <% end %> 
 		</table>
 	</div>

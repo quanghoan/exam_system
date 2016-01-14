@@ -2,7 +2,9 @@
   <h2>
     kaopiz test
   </h2>
-  <%= link_to "Login now", login_path, class: "btn btn-lg btn-primary" %>
+	  <% if !logged_in? %>  
+	  	<%= link_to "Login now", login_path, class: "btn btn-lg btn-primary" %>
+  	<% end %>
   </div>
 
   

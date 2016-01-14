@@ -10,10 +10,10 @@
 			</div>
 		  <% @questions.each.with_index(1) do |question, index| %>
 			  <%= "#{index}" %>.   	
-			  <%= question.content %>			  	
+			  <%= question.content %><br>		  	
 		    	<%= f.fields_for :answers_attributes do |builder| %>
 		    		<% if question.short_answer %>
-					    <%= builder.text_area :"content[#{question.id}]", cols: 50, placeholder: "write your answer here..." %>
+					    <%= builder.text_area :"content[#{question.id}]", cols: 50, placeholder: "write your answer here..." %><br>
 					  <% end %>  	
 		    		<% question.answers.each do |answer| %>					   		  					    			   	 	
 					    <% if question.multiple_check %> 			  	

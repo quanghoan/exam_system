@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :login_attempts
+  has_many :login_attempts, dependent: :destroy
   has_many :user_subjects, dependent: :destroy
   has_many :subjects, through: :user_subjects
   has_many :grades
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
 
   def login_limit?
     if !self.admin?

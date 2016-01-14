@@ -37,6 +37,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_status
+    @user = User.find(params[:id])
+    if @user.update_attributes!(user_status_params)
+      if @user.status 
+        flash[:success] = "#{@user.name} is blocked ."
+        LoginAttempt.create(user_id: @user.id)
+      else
+        flash[:success] = "#{@user.name} is unblocked ."  
+        @user.login_attempts.first.destroy
+      end
+    else
+      flash[:danger] = "This action is invalid ."    
+    end   
+    # byebug 
+    redirect_to users_url 
+  end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted!"
@@ -47,5 +64,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone, :dob)
+    end
+
+    def user_status_params
+      params.require(:user).permit(:status)
     end
 end
