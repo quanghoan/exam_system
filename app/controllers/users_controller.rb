@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
   end
 
   def show
@@ -39,10 +40,10 @@ class UsersController < ApplicationController
 
   def user_status
     @user = User.find(params[:id])
-    if @user.update_attributes!(user_status_params)
+    if @user.update_attributes(user_status_params)
       if @user.status 
         flash[:success] = "#{@user.name} is blocked ."
-        LoginAttempt.create(user_id: @user.id)
+        LoginAttempt.create(user_id: @user.id) 
       else
         flash[:success] = "#{@user.name} is unblocked ."  
         @user.login_attempts.first.destroy
@@ -52,6 +53,10 @@ class UsersController < ApplicationController
     end   
     # byebug 
     redirect_to users_url 
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def destroy

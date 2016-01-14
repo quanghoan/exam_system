@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-
+  
   def create  
     if (params[:test][:answers_attributes]).nil?
       flash[:danger] = " No answer found."
