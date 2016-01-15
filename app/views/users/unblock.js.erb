@@ -1,0 +1,1 @@
+$("#block-<%= @user.id %>").html("<%= escape_javascript(render partial: 'unblock', locals: {user: @user}) %>");

@@ -23,15 +23,11 @@
 				  	| <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" } %>
 				  	</td> 
 				  	<td>
-				  		<div id="toggle">
-					  		<%= form_for user, url: user_status_user_path(user), method: :patch do |f| %>
-					  			<% if user.status || user.login_limit? %>
-					  				<%= f.hidden_field :status, value: false %>
-					  				<%= f.submit "Unblock", class: "block" %>
-				  				<% else %>
-				  					<%= f.hidden_field :status, value: true %>	
-				  					<%= f.submit "Block this user ", class: "block" %>
-				  				<% end %>	
+				  		<div id="block-<%= user.id %>">
+				  			<% if user.status || user.login_limit? %>
+				  				<%= render partial: 'block', locals: {user: user} %>	
+				  			<% else %>	
+				  				<%= render partial: 'unblock', locals: {user: user}%>	
 				  			<% end %>
 			  			</div>
 				  	</td>

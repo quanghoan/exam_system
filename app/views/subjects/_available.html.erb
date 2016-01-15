@@ -1,0 +1,5 @@
+<%= form_for TimeInfo.new do |f| %>
+	<%= f.hidden_field :start_time, value: Time.now %>
+	<%= f.hidden_field :subject_id, value: subject.id %>
+	<%= f.submit "START", class: "btn btn-primary" %>
+<% end %>

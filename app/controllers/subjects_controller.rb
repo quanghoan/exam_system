@@ -37,10 +37,21 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def update_status
+  def opening
     @subject = Subject.find(params[:id])
-    if @subject.update_attributes(update_status_params) 
-      redirect_to subjects_url
+    @subject.update_attributes(update_status_params) 
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
+  def closed
+    @subject = Subject.find(params[:id])
+    @subject.update_attributes(update_status_params) 
+    respond_to do |format|
+      format.html {}
+      format.js {}
     end
   end
 

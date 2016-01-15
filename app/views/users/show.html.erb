@@ -17,16 +17,14 @@
 		    <td><%= 20  %></td> 	
 		    <td><%= 60  %> minutes</td>
 		    <td>
-		    	<% case subject.status %>
-		    	<% when "Started" %>
-			    	<%= form_for TimeInfo.new do |f| %>
-				    	<%= f.hidden_field :start_time, value: Time.now %>
-				    	<%= f.hidden_field :subject_id, value: subject.id %>
-				    	<%= f.submit "START", class: "btn btn-primary" %>
-			    	<% end %>	
-			    <% when "Ready" %>
-			    	<strong><%= "This test is NOT available now." %></strong>
-			    <% end %>		
+			    <div id="status-<%= subject.id %>">
+			    	<% case subject.status %>
+			    	<% when "Started" %>
+			    		<%= render partial: 'subjects/available', locals: {subject: subject} %>
+			    	<% when "Ready" %>
+			    		<%= render 'subjects/unavailable' %>
+			    	<% end %>
+			    </div>	
 		    </td>
 		  </tr> 
 		  <% end %>

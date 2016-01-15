@@ -1,0 +1,1 @@
+$("#active-<%= @subject.id %>").html("<%= escape_javascript(render partial: 'closed', locals: {subject: @subject}) %>");

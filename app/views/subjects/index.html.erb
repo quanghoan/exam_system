@@ -24,17 +24,15 @@
 		    	|<%= link_to " View", subject %>
 		  		|<%= link_to " Delete", subject, method: :delete, data: { confirm: " You sure?" } %>
 		  	</td> 
-		  	<td>
-		  		<%= form_for subject, url: update_status_subject_path(subject) do |f| %>
-		  			<% case subject.status %>
-		  			<% when "Started" %>	
-		  				<%= f.hidden_field :status, value: "Ready" %>
-		  				<%= f.submit "Opening", class: "btn btn-primary" %>
-		  			<% when "Ready" %>
-		  				<%= f.hidden_field :status, value: "Started" %>
-		  				<%= f.submit "Closed" %>
-		  			<% end %>		
-		  		<% end %>	
+		  	<td> 
+		  		<div id="active-<%= subject.id %>">
+			  		<% case subject.status %> 
+			  		<% when "Started" %>	
+			  			<%= render partial: 'opening', locals: {subject: subject} %>
+			  		<% when "Ready" %>
+			  			<%= render partial: 'closed', locals: {subject: subject} %>
+			  		<% end %>
+			  	</div>	
 		  	</td>
 		  </tr> 
 		  <% end %>

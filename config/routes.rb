@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :users do 
     member do 
-      patch :user_status
+      patch :block, :unblock
     end
   end
   resources :tests   
   resources :questions
   resources :subjects do 
     member do 
-      patch :update_status
+      patch :opening, :closed
     end
   end
   resources :results

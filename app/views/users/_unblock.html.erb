@@ -1,0 +1,4 @@
+<%= form_for user, url: block_user_path(user), remote: true do |f| %>
+	<%= f.hidden_field :status, value: true %>
+	<%= f.submit "Block this user", class: "btn btn-warning" %>
+<% end %>	
