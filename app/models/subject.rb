@@ -2,6 +2,7 @@ class Subject < ActiveRecord::Base
 	has_many :user_subjects, dependent: :destroy
 	has_many :users, through: :user_subjects
 	validates :title, presence: true
+	validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
 	has_many :questions, dependent: :destroy
 	has_many :tests
 	has_many :grades

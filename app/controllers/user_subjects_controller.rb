@@ -15,9 +15,28 @@ class UserSubjectsController < ApplicationController
 		redirect_to subjects_url
 	end
 
+	def add_user
+		@subjects = Subject.all 
+		@user = User.find(params[:id])
+	end
+
+	def update_user
+		@user = User.find(params[:id])
+		if @user.update_attributes(update_user_params)
+			flash[:success] = "Update subject to user successfully !"
+		else
+			flash[:danger] = "I'm sorry, something wrong."
+		end
+		redirect_to users_url
+	end
+
 	private
 
 	def user_subject_params
 		params.require(:subject).permit(user_ids: [])
+	end
+
+	def update_user_params
+		params.require(:user).permit(subject_ids: [])
 	end
 end

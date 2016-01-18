@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       if user.login_limit?
-        flash[:danger] = "Sorry, you can not login again. You're blocked !"
+        flash[:danger] = "Sorry, you can not login again. Contact Admin for more details"
         redirect_to login_url
       else
         if user.admin?

@@ -4,6 +4,7 @@ class CreateSubjects < ActiveRecord::Migration
       t.string :title
       t.timestamps null: false
       t.string :status
+      t.integer :duration
     end
   end
 end

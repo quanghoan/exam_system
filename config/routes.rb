@@ -27,7 +27,12 @@ Rails.application.routes.draw do
   resources :results
   resources :grades
   resources :time_infos
-  resources :user_subjects
+  resources :user_subjects do 
+    member do 
+      get :add_user
+      patch :update_user
+    end
+  end
   # resources :update_status
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

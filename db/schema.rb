@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160114040753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "status"
+    t.integer  "duration"
   end
 
   create_table "tests", force: :cascade do |t|

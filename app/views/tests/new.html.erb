@@ -5,7 +5,7 @@
 		<%= form_for @test, url: url_for(controller: 'results', action: :create) do |f|%>	
 			<div style="float: left; position:fixed; top:80px; right:1120px;">		
 				<span id="time_left"> 
-					<%= second_to_time("600".to_i - (Time.now - @time_info.start_time).to_i)%> 
+					<%= second_to_time(@subject.duration.minutes - (Time.now - @time_info.created_at).to_i)%> 
 				</span>
 			</div>
 		  <% @questions.each.with_index(1) do |question, index| %>

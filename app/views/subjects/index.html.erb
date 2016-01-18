@@ -9,6 +9,7 @@
 		    <th>index</th>
 		    <th>subject</th>		
 		    <th>number of questions</th>
+		    <th>time (minutes)</th>
 		    <th>examinees</th>
 		    <th>actions</th>
 		    <th>status</th>
@@ -18,6 +19,7 @@
 		    <td><%= "#{index}" %></td>   	
 		    <td><%= link_to subject.title, subject %></td>
 		    <td><%= subject.questions.count  %></td> 	
+		    <td><%= link_to subject.duration, edit_subject_path(subject) %></td>
 		    <td><%= link_to subject.users.count, user_subject_path(subject) %></td>
 		    <td><%= link_to "Add users ", user_subject_path(subject) %>
 		    	|<%= link_to " Edit", edit_subject_path(subject) %>

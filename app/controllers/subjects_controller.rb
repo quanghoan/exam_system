@@ -64,7 +64,7 @@ class SubjectsController < ApplicationController
   private
 
   def subject_params
-  	params.require(:subject).permit(:title)
+  	params.require(:subject).permit(:title, :duration)
   end
 
   def update_status_params
