@@ -10,7 +10,8 @@
 			</div>
 		  <% @questions.each.with_index(1) do |question, index| %>
 			  <%= "#{index}" %>.   	
-			  <%= question.content %><br>		  	
+			  <%= question.content %><br>
+			  <%= image_tag question.picture.url if question.picture? %>		  	
 		    	<%= f.fields_for :answers_attributes do |builder| %>
 		    		<% if question.short_answer %>
 					    <%= builder.text_area :"content[#{question.id}]", cols: 50, placeholder: "write your answer here..." %><br>

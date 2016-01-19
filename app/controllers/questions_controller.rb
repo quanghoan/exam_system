@@ -21,7 +21,8 @@ class QuestionsController < ApplicationController
     @subjects = Subject.all
   end  
 
-  def create     
+  def create  
+    #byebug   
     if !params[:answers_attributes].nil? && !params[:answers_attributes][:i].nil?
       index = params[:answers_attributes][:i][:correct_answer]
       correct_index = params[:answers_attributes][index]
