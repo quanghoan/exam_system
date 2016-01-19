@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114040753) do
+ActiveRecord::Schema.define(version: 20160119030208) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160114040753) do
     t.integer  "question_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "picture"
   end
 
   add_index "questions", ["subject_id"], name: "index_questions_on_subject_id"
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(version: 20160114040753) do
   add_index "tests", ["user_id"], name: "index_tests_on_user_id"
 
   create_table "time_infos", force: :cascade do |t|
-    t.datetime "start_time"
     t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

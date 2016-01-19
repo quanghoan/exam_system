@@ -14,7 +14,9 @@
 		  <% @questions.each.with_index(1) do |question, index| %>
 		  <tr>
 		    <td><%= "#{index}" %></td>   	
-		    <td><%= question.content %></td>
+		    <td><%= question.content %>
+		    		<%= image_tag question.picture.url if question.picture? %>
+		    </td>
 		    <td>
 		    	<ul>
 		    		<% question.answers.each do |answer| %>
