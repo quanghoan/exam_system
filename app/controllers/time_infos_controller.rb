@@ -1,4 +1,5 @@
 class TimeInfosController < ApplicationController
+  before_action :logged_in_user 
   def create
     @time_info = TimeInfo.new(time_info_params)
     if @time_info.save

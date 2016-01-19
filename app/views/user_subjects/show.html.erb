@@ -4,7 +4,7 @@
 	<strong>Assign examiness for this subject:</strong>
 	<%= @subject.title %>
 	<%= form_for :subject, url: user_subject_path(@subject), method: :patch do |f| %>
-		<%= collection_check_boxes(:subject, :user_ids, User.all, :id, :name) do |u| %>
+		<%= collection_check_boxes(:subject, :user_ids, @users, :id, :name) do |u| %>
 			<ul>
 				<li>
 					<%= u.label("data-value": u.value) {u.check_box + u.text} %>

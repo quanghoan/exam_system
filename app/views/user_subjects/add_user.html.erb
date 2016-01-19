@@ -2,15 +2,19 @@
 <h1> Assign subjects to user</h1>	
 <div class="col-md-6 col-md-offset-3">
 	<strong>Assign subjects to user:</strong>
-	<%= @user.name%>
-	<%= form_for :user, url: url_for(action: 'update_user'), method: :patch do |f| %>
-		<%= collection_check_boxes(:user, :subject_ids, Subject.all, :id, :title) do |u| %>
-			<ul>
-				<li>
-					<%= u.label("data-value": u.value) {u.check_box + u.text} %>
-				</li>
-			</ul>			
+	<%= @user.name%><br>
+	<% if Subject.count != 0 %>
+		<%= form_for :user, url: url_for(action: 'update_user'), method: :patch do |f| %>
+			<%= collection_check_boxes(:user, :subject_ids, Subject.all, :id, :title) do |u| %>
+				<ul>
+					<li>
+						<%= u.label("data-value": u.value) {u.check_box + u.text} %>
+					</li>
+				</ul>			
+			<% end %>
+			<%= f.submit "Save", class: "btn btn-primary" %>
 		<% end %>
-		<%= f.submit "Save", class: "btn btn-primary" %>
-	<% end %>
+	<% else %>
+		No subjects found, create new subject first.
+	<% end %>		
 </div>			

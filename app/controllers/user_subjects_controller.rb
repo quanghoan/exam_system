@@ -1,7 +1,7 @@
 class UserSubjectsController < ApplicationController
 	before_action :admin_user
 	def show
-		@users = User.all 
+		@users = User.where(admin: false)
 		@subject = Subject.find(params[:id])
 	end
 

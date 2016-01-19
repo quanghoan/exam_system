@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
-  
+  # before_filter :set_cache_headers
+  before_action :logged_in_user
   def create  
     if (params[:test][:answers_attributes]).nil?
       flash[:danger] = " No answer found."
@@ -58,6 +59,8 @@ class ResultsController < ApplicationController
       end
       Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
     end
-    redirect_on_back_to logout_path
+    log_out if logged_in?
+    redirect_on_back_to login_path
   end
+
 end

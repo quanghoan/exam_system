@@ -7,15 +7,16 @@ class SessionsController < ApplicationController
         flash[:danger] = "Sorry, you can not login again. Contact Admin for more details"
         redirect_to login_url
       else
+        log_in user
+        remember user
         if user.admin?
           flash[:success] = "Welcome Admin." 
+          redirect_to subjects_url
         else 
           LoginAttempt.create(user_id: user.id)
           flash[:success] = "You have only 1 time to do this test. You are not given the second time. Be careful !"
+          redirect_to current_user
         end  
-        log_in user
-        remember user
-        redirect_to current_user
       end
     else
       flash.now[:danger] = 'Invalid email/password combination'
