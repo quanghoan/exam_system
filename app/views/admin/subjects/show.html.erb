@@ -1,0 +1,40 @@
+<% provide(:title, 'subject') %>
+<h1><%= @subject.title  %></h1>	
+<div class="row">
+	<div class="col-md-12 ">
+		 Number of questions: <%= @questions.count %><br>
+		 Duration: <%= @subject.duration %> (minutes)
+		<table border="1" style="width:100%"> 
+		  <tr>
+		    <th>index</th>
+		    <th>question</th>		
+		    <th> answers</th>
+		    <th>action</th>
+		  </tr>
+		  <% @questions.each.with_index(1) do |question, index| %>
+		  <tr>
+		    <td><%= "#{index}" %></td>   	
+		    <td><%= question.content %><br>
+		    		<%= image_tag question.picture.url if question.picture? %>
+		    </td>
+		    <td>
+		    	<ul>
+		    		<% question.answers.each do |answer| %>
+		    			<% if answer.correct_answer %>
+		    				<div id="correct" >
+		    					<li><%= answer.content %></li>
+		    				</div>
+		    			<% else %>
+		    				<li><%= answer.content %></li>
+		    			<% end %>	
+		    		<% end %>	
+		    	</ul>
+		    </td> 
+		    <td>
+		  		<%= link_to "Delete", admin_question_path(question), method: :delete, data: { confirm: "You sure?" } %>
+		  	</td> 
+		  </tr> 
+		  <% end %>
+		</table>
+	</div>
+</div>	

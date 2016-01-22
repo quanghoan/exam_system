@@ -3,7 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question, inverse_of: :answers
   belongs_to :test
   validates :content, presence: true
-  # validates :correct_answer, presence: true
+  #validates :correct_answer, presence: true
 
   def single
 		self.question.single_check

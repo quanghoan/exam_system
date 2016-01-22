@@ -1,0 +1,16 @@
+<% provide(:title, 'Users') %>
+<h1> Add users to test</h1>	
+<div class="col-md-6 col-md-offset-3">
+	<strong>Assign examiness for this subject:</strong>
+	<%= @subject.title %>
+	<%= form_for [:admin, @subject], url: admin_user_subject_path(@subject), method: :patch do |f| %>
+		<%= collection_check_boxes(:subject, :user_ids, @users, :id, :name) do |u| %>
+			<ul>
+				<li>
+					<%= u.label("data-value": u.value) {u.check_box + u.text} %>
+				</li>
+			</ul>			
+		<% end %>
+		<%= f.submit "Save", class: "btn btn-primary" %>
+	<% end %>
+</div>			

@@ -1,0 +1,13 @@
+<% if params[:type]=='short' %>
+	$("#short-answer").html("<%= escape_javascript(render partial: 'admin/questions/short_answer') %>");
+	$("#radio-answer").html("<%= escape_javascript(render inline: "") %>");
+	$("#multi-answer").html("<%= escape_javascript(render inline: "") %>");
+<% elsif params[:type]=='single' %>	
+	$("#short-answer").html("<%= escape_javascript(render inline: "") %>");
+	$("#radio-answer").html("<%= escape_javascript(render partial: 'admin/questions/radio_question') %>");
+	$("#multi-answer").html("<%= escape_javascript(render inline: "") %>");
+<% elsif params[:type]=='multiple' %>	
+	$("#short-answer").html("<%= escape_javascript(render inline: "") %>");
+	$("#radio-answer").html("<%= escape_javascript(render inline: "") %>");
+	$("#multi-answer").html("<%= escape_javascript(render partial: 'admin/questions/question') %>");
+<% end %>

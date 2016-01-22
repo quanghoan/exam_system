@@ -1,4 +1,0 @@
-<%= form_for user, url: unblock_user_path(user), remote: true do |f| %>
-	<%= f.hidden_field :status, value: false %>
-	<%= f.submit "Unblock", class: "btn btn-danger" %>
-<% end %>	

@@ -1,4 +1,0 @@
-<%= form_for subject, url: closed_subject_path(subject), remote: true do |f| %>
-	<%= f.hidden_field :status, value: "Started" %>
-	<strong><%= f.submit "Closed" %></strong>
-<% end %>

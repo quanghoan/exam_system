@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         remember user
         if user.admin?
           flash[:success] = "Welcome Admin." 
-          redirect_to subjects_url
+          redirect_to admin_subjects_url
         else 
           LoginAttempt.create(user_id: user.id)
           flash[:success] = "You have only 1 time to do this test. You are not given the second time. Be careful !"

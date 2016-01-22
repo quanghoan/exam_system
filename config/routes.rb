@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'login_attempt/update'
-
   get 'auth/:provider/callback', to: 'sessions#createfb'
   get 'auth/failure', to: redirect('/')  
   get 'logout', to: 'sessions#destroyfb'
@@ -12,27 +10,30 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users do 
-    member do 
-      patch :block, :unblock
+  resources :results, only: [:create]
+  resources :time_infos, only: [:create]
+  resources :tests , only: [:new]
+  resources :users, only: [:show]
+  namespace :admin , shallow: true do 
+    resources :grades, only: [:show, :index, :destroy]
+    resources :questions, only: [:new, :new2, :new3, :index, :create, :destroy]
+    resources :users do 
+      member do 
+        patch :block, :unblock
+      end
     end
-  end
-  resources :tests   
-  resources :questions
-  resources :subjects do 
-    member do 
-      patch :opening, :closed
+    resources :subjects do 
+      member do 
+        patch :opening, :closed
+      end
     end
-  end
-  resources :results
-  resources :grades
-  resources :time_infos
-  resources :user_subjects do 
-    member do 
-      get :add_user
-      patch :update_user
-    end
-  end
+    resources :user_subjects do 
+      member do 
+        get :add_user
+        patch :update_user
+      end
+    end 
+  end 
   # resources :update_status
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
