@@ -2,12 +2,12 @@ module SessionsHelper
 
   def admin_user
     if logged_in?
-     redirect_to(root_url) unless current_user.admin?
+     redirect_to current_user unless current_user.admin?
     else
       redirect_to login_path
     end
   end
-  
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
