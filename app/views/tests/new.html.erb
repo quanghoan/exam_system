@@ -36,7 +36,7 @@
 				<% end %>	  
 				<%= f.hidden_field :subject_id, value: @subject.id %>
 				<%= f.hidden_field :user_id, value: current_user.id %>
-				<%= f.submit 'Submit', id: "submit_test", class: "btn btn-primary"%>		
+				<%= f.submit 'Submit', id: "submit_test", class: "btn btn-primary", data: { confirm: "You sure?" } %>		
 			<% end %>	
 		<% end %>	
 	</div>
