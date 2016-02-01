@@ -18,16 +18,18 @@
       <%= f.label :phone %>
       <%= f.text_field :phone, class: 'form-control' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%# f.label :password %>
+      <%= f.hidden_field :password, value: SecureRandom.hex(4) %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%# f.label :password_confirmation, "Confirmation" %>
+      <%# f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.label :admin, 'Is this admin?' %>
       <%= f.select :admin, options_for_select(['false', 'true']) %><br>
-
-      <%= f.submit "Save", class: "btn btn-primary" %>
+      <div class="action">
+        <%= f.submit "Save", class: "btn btn-primary" %>
+      </div>
+      
     <% end %>
   </div>
 </div>

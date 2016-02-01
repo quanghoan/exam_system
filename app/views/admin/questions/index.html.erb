@@ -1,8 +1,10 @@
 <% provide(:title, 'Question list') %>
 <h1> Question list</h1>	
-<div class="row">
+<div class="row">  
 	<div class="col-md-12 ">
-		<%= link_to "new question", new_admin_question_path, class: "btn btn-success" %>
+		<div class="action">
+			<%= link_to "new question", new_admin_question_path, class: "btn btn-success" %>
+		</div>
 		<table border="1" style="width:100%"> 	
 		  <tr>
 		    <th>index</th>
@@ -39,3 +41,4 @@
 		</table>
 	</div>
 </div>	
+         	  

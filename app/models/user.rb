@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_many :login_attempts, dependent: :destroy
   has_many :user_subjects, dependent: :destroy
   has_many :subjects, through: :user_subjects
@@ -13,11 +14,15 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  # validates :password, presence: true, length: { minimum: 6 }
+
+  def send_password
+    UserMailer.sendmail(self).deliver_now
+  end
 
   def login_limit?
     if !self.admin?
-      self.login_attempts.count > 0
+      self.login_attempts.count > 4
     end 
   end
 

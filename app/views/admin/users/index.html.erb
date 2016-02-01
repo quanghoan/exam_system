@@ -2,7 +2,9 @@
 <h1> Manage users </h1>	
 <div class="row"> 
 	<div class="col-md-8 col-md-offset-2">
-		<%= link_to "New user", new_admin_user_path, class: "btn btn-success" %>
+		<div class="action">
+			<%= link_to "New user", new_admin_user_path, class: "btn btn-success" %>
+		</div>	
 		<table border="1" style="width:100%">	
 		  <tr>
 		  	<th>index</th>
@@ -18,7 +20,7 @@
 			    <td>
 			    	<% user.subjects.each do |subject| %>
 			    		<%= link_to subject.title, admin_user_subject_path(subject) %>,
-			    	<% end %>		
+			    	<% end %>			
 			    </td>
 			    <td>	
 			    	<%= link_to " Add subjects ", add_user_admin_user_subject_path(user) %>
@@ -26,7 +28,7 @@
 				  	| <%= link_to " Delete ", admin_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
 			  	</td> 
 			  	<td>
-			  		<div id="block-<%= user.id %>">
+			  		<div id="block-<%= user.id %>", class="button">
 			  			<% if user.status || user.login_limit? %>
 			  				<%= render partial: 'block', locals: {user: user} %>	
 			  			<% else %>	

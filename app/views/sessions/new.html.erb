@@ -10,8 +10,9 @@
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <div class="action">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      </div>  
     <% end %>
     <%# link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   </div>

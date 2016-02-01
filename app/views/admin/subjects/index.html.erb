@@ -2,7 +2,9 @@
 <h1> Subject list</h1>	
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<%= link_to "New subject", new_admin_subject_path, class: "btn btn-success" %>
+		<div class="action">
+			<%= link_to "New subject", new_admin_subject_path, class: "btn btn-success" %>
+		</div>	
 		<table border="1" style="width:100%">	
 		  
 		  <tr>
@@ -27,7 +29,7 @@
 		  		|<%= link_to " Delete", admin_subject_path(subject), method: :delete, data: { confirm: " You sure?" } %>
 		  	</td> 
 		  	<td> 
-		  		<div id="active-<%= subject.id %>">
+		  		<div id="active-<%= subject.id %>", class="button">
 			  		<% case subject.status %> 
 			  		<% when "Started" %>	
 			  			<%= render partial: 'opening', locals: {subject: subject} %>

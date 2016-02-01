@@ -17,7 +17,7 @@
 		    <td><%= 20  %></td> 	
 		    <td><%= subject.duration %> minutes</td>
 		    <td>
-			    <div id="status-<%= subject.id %>">
+			    <div id="status-<%= subject.id %>", class="button">
 			    	<% case subject.status %>
 			    	<% when "Started" %>
 			    		<%= render partial: 'admin/subjects/available', locals: {subject: subject} %>

@@ -2,10 +2,9 @@
   <div class="container">
     <% if logged_in? %>        
       <% if current_user.admin? %>
-        <%= link_to "exam", root_path, id: "logo" %>
+        <%= link_to "kaopiz", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%=link_to current_user.name, admin_subjects_path %>
             <li><%= link_to "Subjects", admin_subjects_path %></li>  
             <li><%= link_to "Users", admin_users_path %></li> 
             <li class="dropdown">

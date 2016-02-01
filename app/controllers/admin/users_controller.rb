@@ -17,7 +17,8 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "create new user successfully"
+      @user.send_password
+      flash[:success] = "#{@user.name} has been added ."
       redirect_to admin_users_url
     else
       render 'new'
@@ -67,7 +68,7 @@ class Admin::UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone, :admin)
+      params.require(:user).permit(:name, :email, :password, :address, :phone, :admin)
     end
 
     def user_status_params
