@@ -26,6 +26,7 @@
 			    	<%= link_to " Add subjects ", add_user_admin_user_subject_path(user) %>
 				    | <%= link_to " Edit ", edit_admin_user_path(user) %>
 				  	| <%= link_to " Delete ", admin_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
+				  	
 			  	</td> 
 			  	<td>
 			  		<div id="block-<%= user.id %>", class="button">

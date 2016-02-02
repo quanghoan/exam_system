@@ -1,6 +1,17 @@
 class Admin::UsersController < ApplicationController
   before_action :admin_user 
   before_action :logged_in_user 
+
+  def password_reset
+    @user = User.find(params[:id])
+    if @user.update_attribute(password: SecureRandom.hex(4))
+      @user.reset_password
+      flash[:success] = "#{@user.name} has been reset password. " 
+    else
+      flash[:danger] = "Something went wrong." 
+    end 
+  end
+
   def new
     @user = User.new
   end
