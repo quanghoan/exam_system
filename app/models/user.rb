@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
   has_secure_password
   # validates :password, presence: true, length: {minimum: 6}
 
-  def reset_password
-    UserMailer.resetpass(self).deliver_now
-  end
-
   def send_password
     UserMailer.sendmail(self).deliver_now
   end

@@ -21,7 +21,7 @@ class Admin::SubjectsController < ApplicationController
   	@subject = Subject.new(subject_params)
   	if @subject.save
   		flash[:success] = "added a subject"
-  		redirect_to new_admin_question_path
+  		redirect_to new_admin_question_path(subject: @subject.id)
   	else
   		render 'new'
   	end

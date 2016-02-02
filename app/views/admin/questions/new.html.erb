@@ -18,7 +18,7 @@
 			<% end %>
 
 			<%= label_tag 'subject' %>
-			<%= select_tag 'subject_id', options_from_collection_for_select(@subjects, 'id','title')	%> </br>
+			<%= select_tag 'subject_id', options_from_collection_for_select(@subjects, 'id','title', params[:subject])	%> </br>
 			<%= link_to " single check ", new_admin_question_path(type: 'single'), remote: true %>
 			| <%= link_to " multiple check ", new_admin_question_path(type: 'multiple'), remote: true %>
 			| <%= link_to " short answer ", new_admin_question_path(type: 'short'), remote: true %>
