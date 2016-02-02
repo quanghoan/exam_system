@@ -10,16 +10,18 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :results, only: [:create]
   resources :time_infos, only: [:create]
   resources :tests , only: [:new]
-  resources :users, only: [:show]
+  resources :users
   namespace :admin , shallow: true do 
     resources :grades, only: [:show, :index, :destroy]
     resources :questions, only: [:new, :new2, :new3, :index, :create, :destroy]
     resources :users do 
       member do 
         patch :block, :unblock
+        
       end
     end
     resources :subjects do 

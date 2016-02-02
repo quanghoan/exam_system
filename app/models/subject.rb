@@ -6,7 +6,7 @@ class Subject < ActiveRecord::Base
 	has_many :questions, dependent: :destroy
 	has_many :tests
 	has_many :grades
-	has_many :time_infos
+	has_many :time_infos, dependent: :destroy
 	after_create :update_status
 
 	def update_status

@@ -1,4 +1,9 @@
-<%= form_for TimeInfo.new do |f| %>
-	<%= f.hidden_field :subject_id, value: subject.id %>
-	<%= f.submit "START", class: "btn btn-primary" %>
-<% end %>
+<% if current_user.time_infos.any? %>
+	<strong><%= "Finished" %></strong>	
+<% else %>	
+	<%= form_for TimeInfo.new do |f| %>
+		<%= f.hidden_field :subject_id, value: subject.id %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.submit "START", class: "btn btn-primary" %>
+	<% end %>
+<% end %>	

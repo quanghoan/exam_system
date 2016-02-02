@@ -2,16 +2,6 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user 
   before_action :logged_in_user 
 
-  def password_reset
-    @user = User.find(params[:id])
-    if @user.update_attribute(password: SecureRandom.hex(4))
-      @user.reset_password
-      flash[:success] = "#{@user.name} has been reset password. " 
-    else
-      flash[:danger] = "Something went wrong." 
-    end 
-  end
-
   def new
     @user = User.new
   end
@@ -42,7 +32,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(update_user_params)
       flash[:success] = "Profile updated!"
       redirect_to admin_users_url
     else
@@ -77,6 +67,10 @@ class Admin::UsersController < ApplicationController
   end
 
   private
+  
+    def update_user_params
+      params.require(:user).permit(:name, :email, :address, :phone)
+    end
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :address, :phone, :admin)

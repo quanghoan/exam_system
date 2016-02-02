@@ -62,5 +62,4 @@ class ResultsController < ApplicationController
     log_out if logged_in?
     redirect_on_back_to login_path
   end
-
 end

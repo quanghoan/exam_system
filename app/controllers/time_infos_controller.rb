@@ -13,6 +13,6 @@ class TimeInfosController < ApplicationController
   private
 
   def time_info_params
-  	params.require(:time_info).permit( :subject_id)
+  	params.require(:time_info).permit( :subject_id, :user_id)
   end
 end
