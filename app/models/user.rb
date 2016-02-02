@@ -63,10 +63,10 @@ class User < ActiveRecord::Base
   end
 
   # Returns true if the given token matches the digest.
-  # def authenticated?(remember_token)
-  #   return false if remember_digest.nil?
-  #   BCrypt::Password.new(remember_digest).is_password?(remember_token)
-  # end
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
 
   # Sets the password reset attributes.
   def create_reset_digest
