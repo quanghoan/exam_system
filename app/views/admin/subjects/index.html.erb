@@ -32,10 +32,12 @@
 		  	<td> 
 		  		<div id="active-<%= subject.id %>", class="button">
 			  		<% case subject.status %> 
-			  		<% when "Started" %>	
+			  		<% when "Started"  %>	
 			  			<%= render partial: 'opening', locals: {subject: subject} %>
 			  		<% when "Ready" %>
 			  			<%= render partial: 'closed', locals: {subject: subject} %>
+			  		<% when "Finish"  %>	
+			  			<%= render partial: 'opening', locals: {subject: subject} %>	
 			  		<% end %>
 			  	</div>	
 		  	</td>

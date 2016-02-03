@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
+  has_many :subject_dones, dependent: :destroy
   has_many :time_infos, dependent: :destroy
   has_many :login_attempts, dependent: :destroy
   has_many :user_subjects, dependent: :destroy
   has_many :subjects, through: :user_subjects
   has_many :grades, dependent: :destroy
-  has_many :results
+  has_many :results, dependent: :destroy
 	has_many :tests, dependent: :destroy
   attr_accessor :remember_token, :reset_token
   before_save { self.email = email.downcase }
@@ -14,30 +15,25 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  # validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  def send_password
-    UserMailer.sendmail(self).deliver_now
-  end
-
-  def login_limit?
-    if !self.admin?
-      self.login_attempts.count > 4
+  def finished?(subject)
+    if SubjectDone.exists?(user_id: self.id)
+      self.subject_dones.each do |sub|
+        sub.subject == subject
+      end 
     end 
   end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name
-      user.email = auth.info.email
-      # user.oauth_token = auth.credentials.token
-      # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.password = SecureRandom.urlsafe_base64      
-      user.save!
-    end
+  def send_password
+    UserMailer.send_mail(self).deliver_now
   end
+
+  # def login_limit?
+  #   if !self.admin?
+  #     self.login_attempts.count > 4
+  #   end 
+  # end
   
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -71,7 +67,7 @@ class User < ActiveRecord::Base
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
-    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_digest, User.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
@@ -83,5 +79,18 @@ class User < ActiveRecord::Base
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      # user.oauth_token = auth.credentials.token
+      # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.password = SecureRandom.urlsafe_base64      
+      user.save!
+    end
   end
 end

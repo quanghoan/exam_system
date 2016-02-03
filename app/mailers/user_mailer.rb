@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 	default from: "hoandq@kaopiz.com"
 
-  def sendmail(user)
+  def send_mail(user)
     @user = user
     message = "Registration - kaopiz test"    
     delivery_options = { address: "gator3103.hostgator.com", port: 587, user_name: "hoandq@kaopiz.com", password: "abcd@1234", authentication: "plain" }

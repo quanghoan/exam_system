@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(update_user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
       redirect_to admin_users_url
     else
@@ -40,25 +40,25 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def unblock
-    @user = User.find(params[:id])
-    @user.update_attributes(user_status_params)
-    @user.login_attempts.destroy_all if @user.login_limit?
-    respond_to do |format|
-      format.html {}
-      format.js {}
-    end
-  end
+  # def unblock
+  #   @user = User.find(params[:id])
+  #   @user.update_attributes(user_status_params)
+  #   @user.login_attempts.destroy_all if @user.login_limit?
+  #   respond_to do |format|
+  #     format.html {}
+  #     format.js {}
+  #   end
+  # end
 
-  def block
-    @user = User.find(params[:id])
-    @user.update_attributes(user_status_params)
-    LoginAttempt.create(user_id: @user.id) if @user.login_attempts.empty?
-    respond_to do |format|
-      format.html {}
-      format.js {}
-    end
-  end
+  # def block
+  #   @user = User.find(params[:id])
+  #   @user.update_attributes(user_status_params)
+  #   LoginAttempt.create(user_id: @user.id) if @user.login_attempts.empty?
+  #   respond_to do |format|
+  #     format.html {}
+  #     format.js {}
+  #   end
+  # end
 
   def destroy
     User.find(params[:id]).destroy
@@ -67,13 +67,9 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  
-    def update_user_params
-      params.require(:user).permit(:name, :email, :address, :phone)
-    end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :address, :phone, :admin)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :address, :phone, :admin)
     end
 
     def user_status_params

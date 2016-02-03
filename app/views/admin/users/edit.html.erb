@@ -17,6 +17,13 @@
 
       <%= f.label :phone %>
       <%= f.text_field :phone, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
       <div class="action">
         <%= f.submit "Save", class: "btn btn-primary" %>
       </div>

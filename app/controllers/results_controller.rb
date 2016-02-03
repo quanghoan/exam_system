@@ -1,11 +1,11 @@
 class ResultsController < ApplicationController
   # before_filter :set_cache_headers
-  before_action :logged_in_user
+  before_action :logged_in_user 
   def create  
     if (params[:test][:answers_attributes]).nil?
       flash[:danger] = " No answer found."
-    else    
-      flash[:success] = " Test submitted."
+    else 
+      flash.now[:success] = " Test submitted."
       single_check_id = params[:test][:answers_attributes][:correct_answer]      
       single_array1 = single_check_id.map {|key,val| val} unless single_check_id.nil?
       array_id1 = single_array1.map(&:to_i) unless single_array1.nil?
@@ -58,6 +58,8 @@ class ResultsController < ApplicationController
         @hash = nil
       end
       Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
+      SubjectDone.create(user_id: current_user.id, subject_id: params[:test][:subject_id].to_i)
+      
     end
     log_out if logged_in?
     redirect_on_back_to login_path
