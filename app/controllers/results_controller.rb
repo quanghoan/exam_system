@@ -57,9 +57,13 @@ class ResultsController < ApplicationController
       else
         @hash = nil
       end
-      Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id) 
-      SubjectDone.create(user_id: current_user.id, subject_id: params[:test][:subject_id].to_i)
-      
+      Grade.create(user_id: current_user.id, score: @score, short_question: @hash, subject_id: subject_id)
+      # unless SubjectDone.where(subject_id: params[:test][:subject_id].to_i, user_id: current_user.id).blank?
+      #   subject_done = SubjectDone.where(subject_id: params[:test][:subject_id].to_i, user_id: current_user.id)
+      #   subject_done.destroy_all
+      # end
+      SubjectDone.create(subject_id: params[:test][:subject_id].to_i, user_id: current_user.id)
+        
     end
     log_out if logged_in?
     redirect_on_back_to login_path

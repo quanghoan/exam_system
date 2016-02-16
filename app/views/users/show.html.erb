@@ -14,7 +14,7 @@
 		  <tr> 
 		    <td><%= "#{index}" %></td>   	
 		    <td><%= subject.title %></td>
-		    <td><%= 20  %></td> 	
+		    <td><%= 20 %></td> 	
 		    <td><%= subject.duration %> minutes</td>
 		    <td>
 			    <div id="status-<%= subject.id %>", class="button">
@@ -23,8 +23,8 @@
 			    		<%= render partial: 'admin/subjects/available', locals: {subject: subject} %>
 			    	<% when "Ready" %>
 			    		<%= render 'admin/subjects/unavailable' %>
-			    	<% when "Finish" %>
-			    		<%= render partial: 'admin/subjects/finish', locals: {subject: subject} %>			    			
+			    	<%# when "Finish" %>
+			    		<%# render partial: 'admin/subjects/finish', locals: {subject: subject} %>
 			    	<% end %>	
 			    </div>	
 		    </td>

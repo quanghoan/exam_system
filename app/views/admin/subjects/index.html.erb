@@ -36,8 +36,8 @@
 			  			<%= render partial: 'opening', locals: {subject: subject} %>
 			  		<% when "Ready" %>
 			  			<%= render partial: 'closed', locals: {subject: subject} %>
-			  		<% when "Finish"  %>	
-			  			<%= render partial: 'opening', locals: {subject: subject} %>	
+			  		<%# when "Finish"  %>	
+			  			<%# render partial: 'opening', locals: {subject: subject} %>	
 			  		<% end %>
 			  	</div>	
 		  	</td>

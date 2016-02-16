@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @subjects = @user.subjects
-    redirect_on_back_to login_path
+    # redirect_on_back_to login_path
   end
 
   # def edit

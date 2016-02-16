@@ -24,6 +24,8 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Score", admin_grades_path %></li>
                 <li class="divider"></li>
+                <li><%= link_to "Setting", edit_admin_user_path(current_user) %></li>
+                <li class="divider"></li>
                 <li><%= link_to "Log out", logout_path, method: "delete" %><li>              
               </ul>  
             </li>

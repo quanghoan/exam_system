@@ -1,5 +1,5 @@
-<% if @user.status %>
-	<strong><%= "Finished" %></strong>
-<% else %>	
-	<%= render partial: 'admin/subjects/available', locals: {subject: subject} %>
-<% end %>	
+
+	<% if @user.finished?(subject) %>
+		<strong><%= "Finished" %></strong>
+	<% end %>		
+	

@@ -18,11 +18,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
   def finished?(subject)
-    if SubjectDone.exists?(user_id: self.id)
-      self.subject_dones.each do |sub|
-        sub.subject == subject
-      end 
-    end 
+    SubjectDone.where(subject_id: subject.id, user_id: self.id).count > 0
   end
 
   def send_password
