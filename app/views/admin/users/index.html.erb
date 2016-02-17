@@ -8,7 +8,7 @@
 		<table border="1" style="width:100%">	
 		  <tr>
 		  	<th>index</th>
-		    <th>user name</th>		
+		    <th><%= sort_link @search, :name, "user name" %></th>		
 		    <th> subjects</th>
 		    <th>actions</th>
 		    <!-- <th>status</th> -->
@@ -26,6 +26,7 @@
 			    	<%= link_to " Add subjects ", add_user_admin_user_subject_path(user) %>
 				    | <%= link_to " Edit  ", edit_admin_user_path(user) %>
 				  	| <%= link_to " Delete ", admin_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
+				  	| <%= link_to " View Score", review_admin_user_path(user) %>
 				  </td>		
 			 
 			  	<!-- <td>

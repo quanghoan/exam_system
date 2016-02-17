@@ -1,8 +1,9 @@
 class Subject < ActiveRecord::Base
+	enum status: [ "Ready", "Started" ] 
 	has_many :subject_dones, dependent: :destroy
 	has_many :user_subjects, dependent: :destroy
 	has_many :users, through: :user_subjects
-	validates :title, presence: true
+	validates :title, presence: true, uniqueness: true
 	validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
 	has_many :questions, dependent: :destroy
 	has_many :tests, dependent: :destroy

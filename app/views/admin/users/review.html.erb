@@ -1,19 +1,20 @@
 <% provide(:title, 'Score') %>
-<h1> Score </h1>	
+<h1> review</h1>	
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
+		User name: <%= @user.name %>
 		<table border="1" style="width:100%">	
-		  <tr>
-		    <th><%= sort_link @search_user, :user_name, "user name" %></th>	
-		    <th><%= sort_link @search_subject, :subject_title, "subject" %></th>	
-		    <th><%= sort_link @search, :score %></th>
-		    <th><%= sort_link @search, :created_at, "time" %></th>
+		  <tr>	
+		  	<th>index</th>
+		    <th>subject</th>	
+		    <th>score</th> 
+		    <th>time</th>
 		    <th>actions</th>
 		  </tr>
-		  <% @grades.each do |grade| %>
-		  	<% if !grade.subject.nil? %>
-				  <tr>   	
-				    <td><%= link_to grade.user.name, review_admin_user_path(grade.user) %></td>
+		  <% @user.grades.each.with_index(1) do |grade, index| %>
+		  	<%# if !grade.subject.nil? %>
+				  <tr>
+				  	<td><%= "#{index}" %></td>   	
 				    <td><%= grade.subject.title %></td>
 				    <td><%= link_to grade.score, admin_grade_path(grade) %></td> 
 				    <td><%= time_ago_in_words(grade.created_at) %> ago</td>
@@ -21,7 +22,7 @@
 				  		<%= link_to "Delete", admin_grade_path(grade), method: :delete, data: { confirm: "You sure?" } %>
 				  	</td> 
 		  		</tr> 	
-		  	<% end %>	
+		  	<%#end%>	
 		  <% end %> 
 		</table>
 	</div>

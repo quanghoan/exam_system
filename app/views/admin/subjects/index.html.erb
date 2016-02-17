@@ -9,9 +9,9 @@
 		  
 		  <tr>
 		    <th>index</th>
-		    <th>subject</th>		
+		    <th><%= sort_link @search, :title, "subject" %></th>		
 		    <th>number of questions</th>
-		    <th>time (minutes)</th>
+		    <th><%= sort_link @search, :duration, "time (minutes)" %></th>
 		    <th>examinees</th>
 		    <th>actions</th>
 		    <th>status</th>

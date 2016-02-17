@@ -16,12 +16,13 @@ Rails.application.routes.draw do
   resources :tests , only: [:new]
   resources :users
   namespace :admin , shallow: true do 
-    resources :grades, only: [:show, :index, :destroy]
+    resources :grades, only: [:show, :index, :destroy] 
+      
     resources :questions, only: [:new, :new2, :new3, :index, :create, :destroy]
     resources :users do 
       member do 
         patch :block, :unblock
-        
+        get :review 
       end
     end
     resources :subjects do 

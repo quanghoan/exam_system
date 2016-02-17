@@ -4,6 +4,7 @@
 	<div class="col-md-12 ">
 		 Number of questions: <%= @questions.count %><br>
 		 Duration: <%= @subject.duration %> (minutes)
+		 <%= link_to "Add question", new_admin_question_path(subject: @subject.id) %>
 		<table border="1" style="width:100%"> 
 		  <tr>
 		    <th>index</th>
@@ -32,6 +33,7 @@
 		    </td> 
 		    <td>
 		  		<%= link_to "Delete", admin_question_path(question), method: :delete, data: { confirm: "You sure?" } %>
+
 		  	</td> 
 		  </tr> 
 		  <% end %>

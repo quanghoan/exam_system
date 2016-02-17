@@ -2,12 +2,17 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user 
   before_action :logged_in_user 
 
+  def review
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
 
   def index
-    @users = User.where(admin: false)
+    @search = User.search(params[:q])
+    @users = @search.result.where(admin: false)
   end
 
   def show

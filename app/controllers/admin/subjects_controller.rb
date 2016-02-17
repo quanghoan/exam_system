@@ -10,7 +10,8 @@ class Admin::SubjectsController < ApplicationController
   end
  	 
   def index
-  	@subjects = Subject.all
+  	@search = Subject.search(params[:q])
+    @subjects = @search.result  
   end
 
   def edit
