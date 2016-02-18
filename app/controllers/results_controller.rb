@@ -2,6 +2,7 @@ class ResultsController < ApplicationController
   # before_filter :set_cache_headers
   before_action :logged_in_user 
   def create  
+    
     if (params[:test][:answers_attributes]).nil?
       flash[:danger] = " No answer found."
     else 

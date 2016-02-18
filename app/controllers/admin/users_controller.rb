@@ -45,26 +45,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # def unblock
-  #   @user = User.find(params[:id])
-  #   @user.update_attributes(user_status_params)
-  #   @user.login_attempts.destroy_all if @user.login_limit?
-  #   respond_to do |format|
-  #     format.html {}
-  #     format.js {}
-  #   end
-  # end
-
-  # def block
-  #   @user = User.find(params[:id])
-  #   @user.update_attributes(user_status_params)
-  #   LoginAttempt.create(user_id: @user.id) if @user.login_attempts.empty?
-  #   respond_to do |format|
-  #     format.html {}
-  #     format.js {}
-  #   end
-  # end
-
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted!"

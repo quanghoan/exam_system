@@ -24,12 +24,6 @@ class User < ActiveRecord::Base
   def send_password
     UserMailer.send_mail(self).deliver_now
   end
-
-  # def login_limit?
-  #   if !self.admin?
-  #     self.login_attempts.count > 4
-  #   end 
-  # end
   
   # Returns the hash digest of the given string.
   def User.digest(string)

@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
       remember user
       if user.admin?
         flash[:success] = "Welcome Admin." 
-        redirect_to admin_subjects_url
+        redirect_to root_url
       else 
-        flash.now[:success] = "Hi #{user.name}"
+        flash[:success] = "Hi #{user.name}"
         redirect_to current_user
       end  
     else
