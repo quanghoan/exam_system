@@ -5,6 +5,7 @@
 		<div class="action">
 			<%= link_to "New user", new_admin_user_path, class: "btn btn-success" %>
 		</div>	
+		<%= will_paginate %>
 		<table border="1" style="width:100%">	
 		  <tr>
 		  	<th>index</th>
@@ -40,6 +41,8 @@
 			  	</td> -->
 	  		</tr> 	
 		  <% end %>
+		  
 		</table>
+		<%= will_paginate %>
 	</div>
 </div>	

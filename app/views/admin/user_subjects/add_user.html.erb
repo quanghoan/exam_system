@@ -15,6 +15,6 @@
 			<%= f.submit "Save", class: "btn btn-primary" %>
 		<% end %>
 	<% else %>
-		No subjects found, create new subject first.
+		No subjects found, <%= link_to "create new subject", new_admin_subject_path %>  first.
 	<% end %>		
 </div>			

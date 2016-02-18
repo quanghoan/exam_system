@@ -5,6 +5,7 @@
 		<div class="action">
 			<%= link_to "new question", new_admin_question_path, class: "btn btn-success" %>
 		</div>
+		<%= will_paginate %>
 		<table border="1" style="width:100%"> 	
 		  <tr>
 		    <th>index</th>
@@ -37,8 +38,11 @@
 		  		<%= link_to "Delete", admin_question_path(question), method: :delete, data: { confirm: "You sure?" } %>
 		  	</td> 
 		  </tr> 
+
 		  <% end %>
+
 		</table>
+		<%= will_paginate %>
 	</div>
 </div>	
          	  

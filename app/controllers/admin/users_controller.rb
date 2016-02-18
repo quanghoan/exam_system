@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @search = User.search(params[:q])
-    @users = @search.result.where(admin: false)
+    @users = @search.result.where(admin: false).paginate(page: params[:page], per_page: 10)
   end
 
   def show

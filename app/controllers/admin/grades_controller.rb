@@ -7,7 +7,7 @@ class Admin::GradesController < ApplicationController
 
   def index
   	@search = Grade.search(params[:q])
-    @grades = @search.result
+    @grades = @search.result.paginate(page: params[:page], per_page: 10)
     @search.build_condition if @search.conditions.empty?
     @search.build_sort if @search.sorts.empty?
     @search_user = Grade.joins(:user).search(params[:q])

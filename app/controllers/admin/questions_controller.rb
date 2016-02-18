@@ -17,7 +17,7 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.paginate(page: params[:page], per_page: 6)
     @subjects = Subject.all
   end  
 
