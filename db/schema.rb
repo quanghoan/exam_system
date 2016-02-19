@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20160203065307) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "login_attempts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.integer  "subject_id"

@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   validates :question_type, presence: true
   validates :content, presence: true
   has_many :answers, dependent: :destroy, inverse_of: :question
-  accepts_nested_attributes_for :answers
+  accepts_nested_attributes_for :answers, reject_if: proc { |attributes| attributes['content'].blank? }
 
   def single_check
   	self.question_type == 1
