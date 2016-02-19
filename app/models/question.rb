@@ -7,7 +7,13 @@ class Question < ActiveRecord::Base
   validates :question_type, presence: true
   validates :content, presence: true
   has_many :answers, dependent: :destroy, inverse_of: :question
+  validates :answers, presence: true
   accepts_nested_attributes_for :answers, reject_if: proc { |attributes| attributes['content'].blank? }
+  # validate :has_answers
+
+  # def has_answers
+  #   errors.add("Question must have at least 2 answers.") if self.answers.blank?
+  # end
 
   def single_check
   	self.question_type == 1

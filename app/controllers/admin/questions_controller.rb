@@ -2,7 +2,7 @@ class Admin::QuestionsController < ApplicationController
   before_action :admin_user
 
   def new
-    @question = Question.new 
+    @question = Question.new
     @subjects = Subject.all 
   end
 
