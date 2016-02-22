@@ -22,7 +22,7 @@ class Admin::QuestionsController < ApplicationController
   end  
 
   def create  
-    #byebug   
+    #byebug
     if !params[:answers_attributes].nil? && !params[:answers_attributes][:i].nil?
       index = params[:answers_attributes][:i][:correct_answer]
       correct_index = params[:answers_attributes][index]
@@ -49,12 +49,12 @@ class Admin::QuestionsController < ApplicationController
   def destroy
     Question.find(params[:id]).destroy
     flash[:success] = "question deleted"
-    redirect_to admin_questions_url
+    redirect_to request.referrer 
   end
 
   private
 
   def question_params
-    params.permit(:subject_id, :content, :question_type, :picture, answers_attributes: [:id, :content, :correct_answer])
+    params.permit(:subject_id, :content, :question_type, :picture, answers_attributes: [:id, :content, :correct_answer, :picture])
   end
 end

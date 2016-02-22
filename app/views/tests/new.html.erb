@@ -21,13 +21,15 @@
 						    <% if question.multiple_check %> 			  	
 					    		<ul id="ul">	
 					    			<li><%= builder.check_box :"answer_id[#{answer.id}]" %>	
-					    				<%= builder.label :answer_id, answer.content %>
+					    				<%= builder.label :answer_id, answer.content %><br>
+					    				<%# image_tag answer.picture.url if answer.picture? %>
 					    			</li>		
 						    	</ul>									    	    			
 					    	<% elsif question.single_check %>
 					    		<ul id="ul">				    	
 					    			<li><%= builder.radio_button :"correct_answer[#{question.id}]", answer.id %>
-					    				<%= builder.label :answer_id, answer.content %>
+					    				<%= builder.label :answer_id, answer.content %><br>
+					    				<%= image_tag answer.picture.url if answer.picture? %>
 					    			</li>		
 						    	</ul>				    
 							  <% end %> 

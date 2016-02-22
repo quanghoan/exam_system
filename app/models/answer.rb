@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+	mount_uploader :picture, PictureUploader
 	has_many :results
   belongs_to :question, inverse_of: :answers
   belongs_to :test

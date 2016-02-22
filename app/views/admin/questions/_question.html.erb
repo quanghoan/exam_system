@@ -3,7 +3,15 @@
 	<%= file_field_tag :picture, accept: 'image/jpeg,image/gif,image/png' %>
 	<%= hidden_field_tag 'question_type', 2 %>
 	<%= fields_for :answers_attributes do |f| %>							
-		<%= render 'answer', f: f %>
+		<% 4.times do |t| %>	
+			<p>
+				<%= f.label :"[#{t}][content]", "Answer" %>
+				<%= f.text_field :"[#{t}][content]" %> 
+				<%= f.check_box :"[#{t}][correct_answer]" %>
+				<%= f.label :"[#{t}][correct_answer]", "Correct answer"%> 
+			</p>	
+			<%# f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+		<% end %>	
 	<% end %>		
 	<script type="text/javascript">
 	  $('#picture').bind('change', function() {

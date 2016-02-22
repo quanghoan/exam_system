@@ -23,8 +23,8 @@
 		    <td><%= subject.questions.count  %></td> 	
 		    <td><%= link_to subject.duration, edit_admin_subject_path(subject) %></td>
 		    <td><%= link_to subject.users.count, admin_user_subject_path(subject) %></td>
-		    <td><%= link_to "Add users ", admin_user_subject_path(subject) %>
-		    	|<%= link_to " Edit", edit_admin_subject_path(subject) %>
+		    <td><%# link_to "Add users ", admin_user_subject_path(subject) %>
+		    	<%= link_to " Edit", edit_admin_subject_path(subject) %>
 		    	|<%= link_to " View", admin_subject_path(subject) %>
 		  		|<%= link_to " Delete", admin_subject_path(subject), method: :delete, data: { confirm: " You sure?" } %>
 		  		|<%= link_to " Add question", new_admin_question_path(subject: subject.id) %>

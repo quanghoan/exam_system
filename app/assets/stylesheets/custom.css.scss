@@ -94,3 +94,10 @@ p {
   background: asset_url('header-img.png');
   height: 481px;
 }
+
+#answer_picture {
+  border: 1px dashed #BBB; 
+  cursor:pointer;
+  width: 30%;
+  font-size: 10px;
+}

@@ -10,7 +10,9 @@
 					<%= f.text_field :"[#{i}][content]" %>
 					<%= f.radio_button :"[i][correct_answer]", "#{i}" %>
 					<%= f.label :"[#{i}][correct_answer]", "Correct Answer" %>
+					<%= f.file_field :"[#{i}][picture]", accept: 'image/jpeg,image/gif,image/png', id: "answer_picture" %> 
 				</p>  
+				
 			<% end %>	
 		<% end %>	
 		<script type="text/javascript">
