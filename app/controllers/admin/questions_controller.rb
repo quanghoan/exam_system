@@ -3,7 +3,8 @@ class Admin::QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @subjects = Subject.all 
+    @subjects = Subject.all
+    # 4.times{@question.answers.build}
   end
 
   def new3

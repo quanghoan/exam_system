@@ -1,0 +1,28 @@
+"1";"1";"Số nào trong những số sau là biểu diễn thập phân của kết quả cộng hai số nhị phân 1.1011 và 1.1101?"
+"1";"1";"Biểu thức nào sau đây cho kết qủa là -n đối với số thập phân 8-chữ số n, nếu số âm được biểu diễn dưới dạng bù 2? Ở đây, + chỉ phép cộng, còn OR và NOR, tương ứng là phép tính 'tổng logic' và 'tổng logic loại trừ' của các bit."
+1;1;Mô tả nào dưới đây là mô tả thích hợp về đặc tính của cấu hình RAID?
+1;1;Máy in phun mực màu sử dụng 3 màu. Hãy chọn tổ hợp đúng về các màu trong nhóm câu trả lời dưới đây:
+1;1;Một video màu được quay lại với tốc độ 30 khung/giây trên màn hình PC toàn phần có độ hiển thị là H640 x V480 điểm và dung lượng 256 màu. Lượng dữ liệu của hình ảnh (tính theo byte) có thể hiển thị trong một phút gần đúng nhất là bao nhiêu? Ở đây, dữ liệu không bị nén.
+1;1;Mô tả nào sau đây là mô tả đúng về hướng đối tượng?
+1;1;Trong thiết kế GUI, thành phần nào sau đây được dùng để chọn một mục trong một số mục loại trừ nhau?
+1;1;Nếu một mạng một máy tính được xây dựng trong môi trường TCP/IP, thì càng nhiều máy khách, việc quản lý các địa chỉ IP liên quan càng phức tạp. Giao thức nào dưới đây đơn giản hoá việc quản lý địa chỉ IP bằng cách gán động địa chỉ IP theo yêu cầu của khách?
+1;1;Phương pháp nào là phương pháp kiểm soát truy nhập LAN với chức năng phát hiện xung đột khung dữ liệu trên môi trường truyền?
+1;1;Số nào dưới đây biểu diễn số thập phân 0.6875 dưới dạng nhị phân?
+1;1;Kiểm thử hộp đen là kỹ thuật kiểm thử dùng trong phát triển phần mềm Mệnh đề nào dưới đây mô tả chính xác việc kiểm thử hộp đen?
+1;1;Có bao nhiêu bit trong một địa chỉ IPv6?
+1;1;Miêu tả nào bên dưới là đúng về mối quan hệ độ lớn dung lượng giữa các đơn vị trong thiết bị đĩa từ?
+1;1;Phần quan trọng nhất của hệ điều hành Linux là: Chọn một phương án trả lời.
+1;1;Để chép một file /tmp/hello.txt vào thư mục /tmp/hello/ ta phải làm lệnh nào sau đây:
+1;1;Để liệt kê các file ẩn trong thư mục hiện hành theo ta dùng lệnh ls với tham số
+1;1;Tập tin sau đây có thuộc tính tuyệt đối như thế nào :-rwx--x--x hello.sh
+1;1;Để xem chi tiết các tiến trình đang chạy trong hệ thống ta dùng lệnh ps với các tham số nào sau đây
+2;1;What is the correct syntax for java main method?
+2;1;An object could be ...
+2;1;Which of the following is not a Java keyword?
+2;1;Java runs on _______.
+2;1;System.out.println(12>>2); What is the output
+2;1;Is JRE is smaller than JDK?
+2;1;Choose the appropriate data type for this field: isSwimmer
+2;1;"What is the output                                                                                               class S {                                                                                                          int x=0;                                                                                                           S(){ x++;}                                                                                                       public static void main(String args[]){                                                                                                             S s=new S();                                                			 	 		 	 	 	 	 	 	  							               System.out.println(s.x);                                                                                             } }"
+2;1;"What will happen when you attempt to compile and run the following code?                                      public class Static {                                                                                            static { int x = 5; }                                                                                            static int x,y;                                                                                                  public static void main(String args[]) {                                                                          x--;                                                                                                         myMethod();                                                                                                       System.out.println(x + y + ++x); }                                                                               public static void myMethod() {                                                                                      y = x++ + ++x; } }"
+2;1;"What displays from the following statements?                                                                String word = 'abcde';                                                                                              for (int i = 0; i <4; i+=2)                                                                                         System.out.print(word[i]);"
