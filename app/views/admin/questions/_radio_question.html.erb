@@ -1,6 +1,6 @@
 <div class="col-md-12 form-actions" data-id="1">
 	<p>
-		<%= text_area_tag 'content', params[:content], :cols => "50", placeholder: "Create new question here..." %>		
+		<%= text_area_tag 'content', params[:content], :cols => "50", placeholder: "Create new question here...",required: true %>		
 		<%= file_field_tag :picture , accept: 'image/jpeg,image/gif,image/png'%>
 		<%= hidden_field_tag :question_type, 1 %>
 		<%= fields_for :answers_attributes do |f| %>

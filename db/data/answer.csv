@@ -1,0 +1,110 @@
+1;"3.1"
+1;"3.375"
+1;"3.5";true
+1;"3.8"
+2;(n OR 10000000) + 00000001
+2;(n OR 11111110) + 11111111
+2;(n XOR 10000000) + 00000001
+2;(n XOR 11111111) + 00000001;true
+3;Tốc độ truyền dữ liệu của từng thiết bị đĩa cứng tăng lên.
+3;Có thể đạt tới dung lượng lớn hơn nhiều so với dung lượng tổng thể của các thiết bị đĩa cứng đơn lẻ.
+3;Vì nhiều thiết bị đĩa cứng có thể được truy nhập tới, nên thời gian truy nhập dữ liệu tăng lên.
+3;Hiệu năng nâng cao của hệ thống đĩa và độ tin cậy có thể dự báo trước nhờ tổ hợp nhiều thiết bị đĩa cứng.;true
+4;Lục lam - đỏ tươi - vàng  ;true
+4;Lục lam - đỏ tươi - đen
+4;Đỏ - xanh lá cây - vàng
+4;Đỏ - xanh lá cây - xanh da trời
+5;300K
+5;1M
+5;550M;true
+5;133G
+6;Trong mô hình hướng đối tượng các phép toán đối tượng cần trừu tượng hóa phải được chỉ rõ trước.
+6;Sự phụ thuộc lẫn nhau giữa các đối tượng có thể tăng lên bằng cách đóng gói.
+6;Khi một lớp thay đổi tất cả các lớp trên đó đều phải thay đổi.
+6;Khi mở rộng hoặc thay đổi một mô hình phần thay đổi có thể khoanh vùng được thông qua khái niệm thừa kế;true
+7;Thanh cuốn
+7;Con trượt
+7;Hộp kiểm tra
+7;Nút radio;true
+8;DHCP;true
+8;HTTP
+8;LDAP
+8;SNMP
+9;CSMA/CA
+9;Tonken passing bus;true
+9;CSMA/CD
+9;Tonken passing ring
+10;0.1001
+10;0.1101;true
+10;0.1011
+10;0.1111
+11;Kiểm thử hộp đen phân tích chương trình nguồn và kiểm tra luồng điều khiển chương trình và luồng dữ liệu, ví dụ như các biến. Nó được thựchiện chủ yếu bởi các bên thứ ba và không phải bởi các nhà phát triển chương trình
+11;Kiểm thử hộp đen kiểm tra xem các chức năng chương trình có như người thiết kế dự định hay không. Nó được thực hiện chủ yếu bởi các bên thứ ba và không phải bởi những người phát triển chương trình;true
+11;Mục tiêu của kiểm thử hộp đen là thực hiện tất cả các lệnh trong chương trình ít nhất là một lần. Nó được thực hiện chủ yếu bởi chính nhà phát triển chương trình
+11;Kiểm thử hộp đen dựa vào những đặc tả bên trong mô tả cấu trúc và logic bên trong của chương trình. Nó được thực hiện chủ yếu bởi chính nhà phát triển chương trình
+12;16
+12;32
+12;128;true
+12;1024
+13;Cylinder>Sector>Track
+13;Cylinder>Track>Sector;true
+13;Sector > Track > Cylinder
+13;Track>Sector>Cylinder
+14;Kernel;true
+14;File System
+14;Shell
+14;Services
+15;cp tmp/hello.txt /tmp/hello
+15;cp /tmp/hello.txt /tmp/hello;true
+15;copy /tmp/hello.txt /tmp/hello/
+15;cp /tmp/hello /tmp/hello
+16;–b
+16;–n
+16;–a;true
+16;–l
+17;755
+17;711;true
+17;077
+17;644
+18;–ax;true
+18;–ef
+18;–axf
+18;Cả 3 câu đều đúng
+19;public void main(String[] args)
+19;public static void main(string[] args)
+19;public static void main()
+19;none of the above;true
+20;anything;true
+20;an algorithm
+20;a data container
+20;a program
+21;static
+21;try
+21;Integer;true
+21;new
+22;Windows
+22;Unix/Linux
+22;Mac
+22;All of the above;true
+23;14
+23;3;true
+23;8
+23;4
+24;True;true
+24;False
+25;double
+25;boolean;true
+25;string
+25;int
+26;3
+26;1;true
+26;2
+26;4
+27;Compile time error
+27;prints : 1
+27;prints : 2
+27;prints : 3;true
+28;Ab
+28;Ac;true
+28;Ace
+28;Bd

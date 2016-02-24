@@ -9,6 +9,7 @@
 						<%= second_to_time(@subject.duration.minutes - (Time.now - @time_info.created_at).to_i)%> 
 					</span>
 				</div>
+				
 			  <% @questions.each.with_index(1) do |question, index| %>
 				  <%= "#{index}" %>.   	
 				  <%= simple_format question.content %><br>
