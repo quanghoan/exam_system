@@ -1,0 +1,2 @@
+subject_id;title;duration;content of question;question_type;content of answer1;correct?;content of answer2; correct?; content of answer3;correct?; content of answer4;correct?
+1;title;20;content of question;1;content of answer1;true;content of answer2;false;content of answer3; false; content of answer4; false

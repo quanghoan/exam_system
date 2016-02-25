@@ -12,15 +12,19 @@ class Question < ActiveRecord::Base
   # validate :answers_count
 
   # def answers_count
-  #   if self.answers.size < 2
-  #     errors.add(:answers, "a question has at least 2 answers.")
+  #   if self.question_type != 3
+  #     if self.answers.size < 2
+  #       errors.add(:answers, "a question has at least 2 answers.")
+  #     end
   #   end  
   # end
 
   # def correct_count
-  #   unless self.answers.map(&:correct_answer).include? true
-  #     errors.add(:answers, "correct answer can not be blank")
-  #   end
+  #   if self.question_type != 3
+  #     unless self.answers.map(&:correct_answer).include? true 
+  #       errors.add(:answers, "correct answer can not be blank")
+  #     end
+  #   end  
   # end
 
   def inactive?
