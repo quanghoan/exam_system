@@ -39,11 +39,11 @@ namespace :csv do
 
     question_csv_file_path = 'db/data/question.csv'
     CSV.foreach(question_csv_file_path, force_quotes: true, col_sep: ';') do |column|
-      Question.create!({
+      Question.new({
         subject_id: column[0],
         question_type: column[1],
         content: column[2] 
-      })
+      }).save(validate: false)
     end
     puts "Questions created!"
 

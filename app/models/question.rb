@@ -8,24 +8,24 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
   has_many :answers, dependent: :destroy, inverse_of: :question
   accepts_nested_attributes_for :answers, reject_if: proc { |attributes| attributes['content'].blank? }
-  # validate :correct_count
-  # validate :answers_count
+  validate :correct_count
+  validate :answers_count
 
-  # def answers_count
-  #   if self.question_type != 3
-  #     if self.answers.size < 2
-  #       errors.add(:answers, "a question has at least 2 answers.")
-  #     end
-  #   end  
-  # end
+  def answers_count
+    if self.question_type != 3
+      if self.answers.size < 2
+        errors.add(:answers, "a question has at least 2 answers.")
+      end
+    end  
+  end
 
-  # def correct_count
-  #   if self.question_type != 3
-  #     unless self.answers.map(&:correct_answer).include? true 
-  #       errors.add(:answers, "correct answer can not be blank")
-  #     end
-  #   end  
-  # end
+  def correct_count
+    if self.question_type != 3
+      unless self.answers.map(&:correct_answer).include? true 
+        errors.add(:answers, "correct answer can not be blank")
+      end
+    end  
+  end
 
   def inactive?
     self.answers.count < 2

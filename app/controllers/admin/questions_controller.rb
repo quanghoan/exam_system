@@ -22,6 +22,23 @@ class Admin::QuestionsController < ApplicationController
     @subjects = Subject.all
   end  
 
+  def edit
+    @question = Question.find(params[:id])
+    @subjects = Subject.all
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(question_params)
+      if @question.inactive?
+        flash.now[:error] = "This question is still inactive!"
+      else
+        flash[:success] = "This is active!"
+      end
+    end
+    redirect_to admin_subject_path(@question.subject)   
+  end
+
   def create  
     #byebug
     if !params[:answers_attributes].nil? && !params[:answers_attributes][:i].nil?
